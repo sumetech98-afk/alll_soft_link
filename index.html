@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sumetech · Three smart tools for your business</title>
-  <!-- Font Awesome for icons (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -20,7 +19,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding: 2rem 1.5rem;
     }
 
@@ -30,23 +29,101 @@
       margin: 0 auto;
     }
 
-    /* header */
+    /* ============ MAIN PAGE ============ */
+    #mainPage { display: block; }
+
     .header {
       text-align: center;
       margin-bottom: 3rem;
     }
 
+    /* Top row: badge + buy now */
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       background: rgba(0, 112, 243, 0.1);
       color: #0070f3;
       font-weight: 600;
       font-size: 0.85rem;
       letter-spacing: 0.3px;
-      padding: 0.35rem 1rem;
+      padding: 0.5rem 1.1rem;
       border-radius: 40px;
-      margin-bottom: 1rem;
       border: 1px solid rgba(0, 112, 243, 0.2);
+    }
+
+    .badge i { margin-right: 6px; }
+
+    /* ============ 3D BUY NOW BUTTON ============ */
+    .btn-buy-3d {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: #ffffff;
+      background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 45%, #ea580c 100%);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow:
+        0 6px 0 #b45309,
+        0 9px 12px rgba(234, 88, 12, 0.4),
+        inset 0 2px 2px rgba(255, 255, 255, 0.55),
+        inset 0 -3px 5px rgba(120, 53, 15, 0.35);
+      transition: all 0.12s ease;
+      text-shadow: 0 1px 1px rgba(120, 53, 15, 0.5);
+      font-family: inherit;
+      animation: pulseGlow 2.2s ease-in-out infinite;
+    }
+
+    .btn-buy-3d i {
+      font-size: 1rem;
+      filter: drop-shadow(0 1px 1px rgba(120, 53, 15, 0.5));
+      transition: transform 0.2s;
+    }
+
+    .btn-buy-3d:hover {
+      background: linear-gradient(180deg, #fcd34d 0%, #f59e0b 45%, #dc2626 100%);
+      transform: translateY(-2px);
+      box-shadow:
+        0 8px 0 #9a3412,
+        0 12px 18px rgba(234, 88, 12, 0.5),
+        inset 0 2px 2px rgba(255, 255, 255, 0.6),
+        inset 0 -3px 5px rgba(120, 53, 15, 0.4);
+    }
+
+    .btn-buy-3d:active {
+      transform: translateY(4px);
+      box-shadow:
+        0 2px 0 #b45309,
+        0 3px 6px rgba(234, 88, 12, 0.4),
+        inset 0 2px 3px rgba(120, 53, 15, 0.5);
+    }
+
+    .btn-buy-3d:hover i { transform: translateX(3px); }
+
+    /* Subtle glow animation */
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(251, 191, 36, 0));
+      }
+      50% {
+        filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.7));
+      }
     }
 
     .header h1 {
@@ -73,7 +150,6 @@
       opacity: 0.9;
     }
 
-    /* cards grid */
     .cards {
       display: flex;
       flex-wrap: wrap;
@@ -93,7 +169,6 @@
       flex-direction: column;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(2px);
     }
 
     .card:hover {
@@ -121,17 +196,9 @@
       box-shadow: 0 12px 18px -8px rgba(0, 0, 0, 0.2);
     }
 
-    .icon-bg.attend {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-    }
-
-    .icon-bg.gst {
-      background: linear-gradient(135deg, #0f7b3e, #0fa958);
-    }
-
-    .icon-bg.fabrication {
-      background: linear-gradient(135deg, #b45309, #d97706);
-    }
+    .icon-bg.attend { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+    .icon-bg.gst { background: linear-gradient(135deg, #0f7b3e, #0fa958); }
+    .icon-bg.fabrication { background: linear-gradient(135deg, #b45309, #d97706); }
 
     .card-header h2 {
       font-size: 1.8rem;
@@ -171,9 +238,7 @@
       border-bottom: 1px solid #ecf1f9;
     }
 
-    .feature-list li:last-child {
-      border-bottom: none;
-    }
+    .feature-list li:last-child { border-bottom: none; }
 
     .feature-list i {
       color: #0070f3;
@@ -183,19 +248,10 @@
       text-align: center;
     }
 
-    .attend .feature-list i {
-      color: #1e3c72;
-    }
+    .attend .feature-list i { color: #1e3c72; }
+    .gst .feature-list i { color: #0f7b3e; }
+    .fabrication .feature-list i { color: #b45309; }
 
-    .gst .feature-list i {
-      color: #0f7b3e;
-    }
-
-    .fabrication .feature-list i {
-      color: #b45309;
-    }
-
-    /* link area */
     .link-area {
       display: flex;
       flex-direction: column;
@@ -241,7 +297,6 @@
       border-radius: 60px;
       text-decoration: none;
       transition: all 0.2s ease;
-      border: none;
       cursor: pointer;
       box-shadow: 0 12px 22px -8px rgba(0, 0, 0, 0.25);
       letter-spacing: 0.3px;
@@ -249,10 +304,7 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .btn-test i {
-      font-size: 1.2rem;
-      transition: transform 0.2s;
-    }
+    .btn-test i { font-size: 1.2rem; transition: transform 0.2s; }
 
     .btn-test:hover {
       background: #142b4b;
@@ -260,33 +312,14 @@
       box-shadow: 0 20px 30px -10px rgba(0, 70, 150, 0.5);
     }
 
-    .btn-test:hover i {
-      transform: translateX(4px);
-    }
+    .btn-test:hover i { transform: translateX(4px); }
 
-    .attend .btn-test {
-      background: #1e3c72;
-    }
-
-    .attend .btn-test:hover {
-      background: #2a4f8a;
-    }
-
-    .gst .btn-test {
-      background: #0f7b3e;
-    }
-
-    .gst .btn-test:hover {
-      background: #139c4f;
-    }
-
-    .fabrication .btn-test {
-      background: #b45309;
-    }
-
-    .fabrication .btn-test:hover {
-      background: #d97706;
-    }
+    .attend .btn-test { background: #1e3c72; }
+    .attend .btn-test:hover { background: #2a4f8a; }
+    .gst .btn-test { background: #0f7b3e; }
+    .gst .btn-test:hover { background: #139c4f; }
+    .fabrication .btn-test { background: #b45309; }
+    .fabrication .btn-test:hover { background: #d97706; }
 
     .footnote {
       text-align: center;
@@ -300,181 +333,707 @@
       margin-right: auto;
     }
 
-    .footnote i {
-      color: #ff6b6b;
-      margin: 0 4px;
+    .footnote i { color: #ff6b6b; margin: 0 4px; }
+
+    /* ============ PAYMENT PAGE ============ */
+    #paymentPage { display: none; }
+
+    .payment-page {
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 40px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.2);
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #0070f3;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      transition: gap 0.2s;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .back-btn:hover { gap: 14px; }
+
+    .payment-page h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0b1b32;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .pay-sub {
+      text-align: center;
+      color: #5b6f8c;
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .upi-section {
+      background: linear-gradient(135deg, #f0f4fe, #e8eeff);
+      border-radius: 28px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      border: 1px solid #d9e2f0;
+    }
+
+    .qr-placeholder {
+      width: 220px;
+      height: 220px;
+      background: #ffffff;
+      border-radius: 20px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #b0c4de;
+      box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .qr-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+
+    .qr-placeholder i {
+      font-size: 4rem;
+      color: #b0c4de;
+    }
+
+    .upi-id-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 0.85rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid #d9e2f0;
+      max-width: 480px;
+      margin: 0 auto 0.5rem;
+      box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.06);
+      flex-wrap: wrap;
+    }
+
+    .upi-id-box i { color: #0070f3; font-size: 1.2rem; }
+
+    .upi-text {
+      font-family: 'SF Mono', 'Menlo', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0b1b32;
+      letter-spacing: 0.3px;
+      user-select: all;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      background: #0070f3;
+      color: white;
+      border: none;
+      padding: 0.45rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .copy-btn:hover { background: #005bb5; }
+    .copy-btn.copied { background: #0f7b3e; }
+
+    .pay-note {
+      font-size: 0.9rem;
+      color: #6d7f99;
+      margin-top: 0.8rem;
+    }
+
+    /* ============ PROOF FORM ============ */
+    .proof-form-section { margin-top: 2rem; }
+
+    .proof-form-section h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0b1b32;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .proof-form-section h3 i { color: #f59e0b; }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #23344d;
+      margin-bottom: 0.4rem;
+    }
+
+    .required { color: #ef4444; }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      border-radius: 16px;
+      border: 1.5px solid #d9e2f0;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fafbfe;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      color: #0b1b32;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #0070f3;
+      box-shadow: 0 0 0 4px rgba(0, 112, 243, 0.1);
+      background: #ffffff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .form-row .form-group { flex: 1; }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #0f7b3e, #0fa958);
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+      border-radius: 60px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 14px 28px -10px rgba(15, 123, 62, 0.5);
+      width: 100%;
+      margin-top: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-submit i { font-size: 1.2rem; }
+
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 35px -12px rgba(15, 123, 62, 0.7);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-status {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-status.success {
+      display: flex;
+      background: #ecfdf5;
+      color: #0f7b3e;
+      border: 1px solid #a7f3d0;
+    }
+
+    .form-status.error {
+      display: flex;
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+
+    /* ============ RESPONSIVE ============ */
     @media (max-width: 1200px) {
-      .card {
-        flex: 1 1 340px;
-        max-width: 480px;
-      }
+      .card { flex: 1 1 340px; max-width: 480px; }
     }
 
     @media (max-width: 700px) {
-      .header h1 {
-        font-size: 2rem;
-      }
-      .card-header {
-        padding: 1.5rem 1.5rem 1rem 1.5rem;
-      }
-      .card-body {
-        padding: 0 1.5rem 1.5rem 1.5rem;
-      }
-      .icon-bg {
-        width: 50px;
-        height: 50px;
-        font-size: 1.6rem;
-      }
-      .card-header h2 {
-        font-size: 1.5rem;
-      }
-      .btn-test {
-        font-size: 1rem;
-        padding: 0.9rem 1.5rem;
-      }
-      body {
-        padding: 1.5rem 1rem;
-      }
+      .header h1 { font-size: 2rem; }
+      .card-header { padding: 1.5rem 1.5rem 1rem 1.5rem; }
+      .card-body { padding: 0 1.5rem 1.5rem 1.5rem; }
+      .icon-bg { width: 50px; height: 50px; font-size: 1.6rem; }
+      .card-header h2 { font-size: 1.5rem; }
+      .btn-test { font-size: 1rem; padding: 0.9rem 1.5rem; }
+      body { padding: 1.5rem 1rem; }
+      .payment-page { padding: 2rem 1.5rem; border-radius: 28px; }
+      .payment-page h2 { font-size: 1.7rem; }
+      .form-row { flex-direction: column; gap: 0; }
+      .upi-id-box { flex-wrap: wrap; padding: 0.8rem 1rem; }
+      .upi-text { font-size: 0.85rem; }
+      .btn-buy-3d { font-size: 0.85rem; padding: 0.5rem 1.1rem; }
+      .badge { font-size: 0.75rem; padding: 0.4rem 0.9rem; }
     }
 
     @media (max-width: 420px) {
-      .card {
-        border-radius: 28px;
-        min-width: 100%;
-      }
-      .feature-list li {
-        font-size: 0.9rem;
-      }
-      .url-badge {
-        font-size: 0.7rem;
-      }
+      .card { border-radius: 28px; min-width: 100%; }
+      .feature-list li { font-size: 0.9rem; }
+      .url-badge { font-size: 0.7rem; }
+      .payment-page { padding: 1.5rem 1rem; }
+      .payment-page h2 { font-size: 1.4rem; }
+      .upi-section { padding: 1.2rem; }
+      .upi-text { font-size: 0.75rem; }
+      .top-row { gap: 0.6rem; }
+      .btn-buy-3d { font-size: 0.78rem; padding: 0.45rem 1rem; gap: 6px; }
+      .badge { font-size: 0.7rem; padding: 0.35rem 0.8rem; }
     }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <div class="badge"><i class="fas fa-rocket" style="margin-right: 6px;"></i> 
-      <h1>
-        <i class="fas fa-cubes"></i> Powered by Sumetech
-      </h1>
-      <div class="subhead">
-        Attendance & payroll automation · GST accounting · Fabrication work manager — all ready to test. Click any button below to open the live software. For Demo Log in User ID- admin & Password- admin123
+
+    <!-- ==================== MAIN PAGE ==================== -->
+    <div id="mainPage">
+      <div class="header">
+
+        <!-- Top row: Live Demo badge + Buy Now 3D button side-by-side -->
+        <div class="top-row">
+          <div class="badge">
+            <i class="fas fa-rocket"></i> Live Demo Available
+          </div>
+          <button type="button" class="btn-buy-3d" id="buyNowBtn">
+            <i class="fas fa-shopping-cart"></i> Buy Now
+          </button>
+        </div>
+
+        <h1>
+          <i class="fas fa-cubes"></i> Powered by Sumetech
+        </h1>
+        <div class="subhead">
+          Attendance &amp; payroll automation · GST accounting · Fabrication work manager — all ready to test. Click any button below to open the live software. For Demo Log in User ID- admin &amp; Password- admin123
+        </div>
+      </div>
+
+      <div class="cards">
+
+        <!-- CARD 1 -->
+        <div class="card attend">
+          <div class="card-header">
+            <div class="icon-bg attend"><i class="fas fa-hard-hat"></i></div>
+            <div>
+              <h2>Worker Attendance</h2>
+              <div class="sub">Month-wise Excel · WhatsApp PDF</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> <span>Attendance, advances &amp; bonus tracking</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Auto month-wise Excel files (offline folder)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>One-click WhatsApp PDF report</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Worker summary, overtime &amp; salary calculation</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>12h+ = working day, partial days paid</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>No data loss — auto restore on reload</span></li>
+            </ul>
+            <div class="link-area">
+              <div class="url-badge">
+                <i class="fas fa-link"></i>
+                <span>https://zamil98.github.io/Worker_Attendance/</span>
+              </div>
+              <a href="https://zamil98.github.io/Worker_Attendance/" target="_blank" rel="noopener noreferrer" class="btn-test">
+                <i class="fas fa-flask"></i> Test Attendance Software
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card gst">
+          <div class="card-header">
+            <div class="icon-bg gst"><i class="fas fa-file-invoice-dollar"></i></div>
+            <div>
+              <h2>GST Accounting</h2>
+              <div class="sub">Invoices · Returns · Communication</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> <span>Create GST invoices &amp; manage parties</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Item / product catalog with GST slabs</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>GSTR-1 &amp; GSTR-3B style reports</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Payments tracking &amp; communication center</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>SMS / Email / WhatsApp broadcast to parties</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Company settings &amp; SMS integration (textbelt)</span></li>
+            </ul>
+            <div class="link-area">
+              <div class="url-badge">
+                <i class="fas fa-link"></i>
+                <span>https://zamil98.github.io/AccountGst/</span>
+              </div>
+              <a href="https://zamil98.github.io/AccountGst/" target="_blank" rel="noopener noreferrer" class="btn-test">
+                <i class="fas fa-flask"></i> Test GST Software
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card fabrication">
+          <div class="card-header">
+            <div class="icon-bg fabrication"><i class="fas fa-industry"></i></div>
+            <div>
+              <h2>Fabrication Work</h2>
+              <div class="sub">Multi-company · Auto-save · PDF/WhatsApp</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> <span>Multi-company work records with auto-save</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Track weight, rate, base, GST &amp; grand total</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Advance &amp; payment records per company</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Month-wise summary &amp; business overview</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>Excel export / import &amp; PDF report</span></li>
+              <li><i class="fas fa-check-circle"></i> <span>WhatsApp PDF with ready message</span></li>
+            </ul>
+            <div class="link-area">
+              <div class="url-badge">
+                <i class="fas fa-link"></i>
+                <span>https://zamil98.github.io/Febrication_work/</span>
+              </div>
+              <a href="https://zamil98.github.io/Febrication_work/" target="_blank" rel="noopener noreferrer" class="btn-test">
+                <i class="fas fa-flask"></i> Test Fabrication Software
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footnote">
+        <i class="fas fa-bolt"></i> All three applications are live and free to test. All data stays in your browser (or chosen folder) — no sign-up required.
+        <br>Built with <i class="fas fa-heart"></i> for small businesses, contractors &amp; fabricators.
       </div>
     </div>
 
-    <!-- Cards -->
-    <div class="cards">
+    <!-- ==================== PAYMENT PAGE ==================== -->
+    <div id="paymentPage">
+      <div class="payment-page">
 
-      <!-- CARD 1: Worker / Attendance Software -->
-      <div class="card attend">
-        <div class="card-header">
-          <div class="icon-bg attend">
-            <i class="fas fa-hard-hat"></i>
+        <button type="button" class="back-btn" id="backBtn">
+          <i class="fas fa-arrow-left"></i> Back to home
+        </button>
+
+        <h2>
+          <i class="fas fa-credit-card" style="color: #f59e0b; margin-right: 10px;"></i>
+          Complete Your Purchase
+        </h2>
+        <p class="pay-sub">Pay via UPI and submit your payment proof below</p>
+
+        <!-- UPI Section -->
+        <div class="upi-section">
+          <div class="qr-placeholder">
+            <img id="qrImage" src="" alt="UPI QR Code" style="display: none;">
+            <i class="fas fa-qrcode" id="qrFallbackIcon"></i>
           </div>
-          <div>
-            <h2>Worker Attendance</h2>
-            <div class="sub">Month-wise Excel · WhatsApp PDF</div>
+          <p style="font-weight: 600; color: #0b1b32; margin-bottom: 0.8rem;">Scan QR or pay to UPI ID</p>
+          <div class="upi-id-box">
+            <i class="fas fa-mobile-alt"></i>
+            <span class="upi-text" id="upiIdText">s6154632725482301@slc</span>
+            <button type="button" class="copy-btn" id="copyBtn">
+              <i class="fas fa-copy"></i> Copy
+            </button>
           </div>
+          <p class="pay-note">
+            <i class="fas fa-info-circle"></i> After payment, fill the form below with your transaction details.
+          </p>
         </div>
-        <div class="card-body">
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> <span>Attendance, advances &amp; bonus tracking</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Auto month-wise Excel files (offline folder)</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>One-click WhatsApp PDF report</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Worker summary, overtime &amp; salary calculation</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>12h+ = working day, partial days paid</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>No data loss — auto restore on reload</span></li>
-          </ul>
-          <div class="link-area">
-            <div class="url-badge">
-              <i class="fas fa-link"></i>
-              <span>https://zamil98.github.io/Worker_Attendance/</span>
+
+        <!-- Proof Form -->
+        <div class="proof-form-section">
+          <h3><i class="fas fa-file-invoice"></i> Payment Proof Submission</h3>
+          <form id="paymentProofForm">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Full Name <span class="required">*</span></label>
+                <input type="text" id="fullName" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="mobile" placeholder="10-digit mobile" pattern="[0-9]{10,12}" required>
+              </div>
             </div>
-            <a href="https://zamil98.github.io/Worker_Attendance/" target="_blank" rel="noopener noreferrer" class="btn-test">
-              <i class="fas fa-flask"></i> Test Attendance Software
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
 
-      <!-- CARD 2: GST Accounting Software -->
-      <div class="card gst">
-        <div class="card-header">
-          <div class="icon-bg gst">
-            <i class="fas fa-file-invoice-dollar"></i>
-          </div>
-          <div>
-            <h2>GST Accounting</h2>
-            <div class="sub">Invoices · Returns · Communication</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> <span>Create GST invoices &amp; manage parties</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Item / product catalog with GST slabs</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>GSTR-1 &amp; GSTR-3B style reports</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Payments tracking &amp; communication center</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>SMS / Email / WhatsApp broadcast to parties</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Company settings &amp; SMS integration (textbelt)</span></li>
-          </ul>
-          <div class="link-area">
-            <div class="url-badge">
-              <i class="fas fa-link"></i>
-              <span>https://zamil98.github.io/AccountGst/</span>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="amount">Amount Paid (₹) <span class="required">*</span></label>
+                <input type="number" id="amount" placeholder="e.g. 999" min="1" required>
+              </div>
             </div>
-            <a href="https://zamil98.github.io/AccountGst/" target="_blank" rel="noopener noreferrer" class="btn-test">
-              <i class="fas fa-flask"></i> Test GST Software
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
 
-      <!-- CARD 3: Fabrication Work Manager -->
-      <div class="card fabrication">
-        <div class="card-header">
-          <div class="icon-bg fabrication">
-            <i class="fas fa-industry"></i>
-          </div>
-          <div>
-            <h2>Fabrication Work</h2>
-            <div class="sub">Multi-company · Auto-save · PDF/WhatsApp</div>
-          </div>
-        </div>
-        <div class="card-body">
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> <span>Multi-company work records with auto-save</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Track weight, rate, base, GST &amp; grand total</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Advance &amp; payment records per company</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Month-wise summary &amp; business overview</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>Excel export / import &amp; PDF report</span></li>
-            <li><i class="fas fa-check-circle"></i> <span>WhatsApp PDF with ready message</span></li>
-          </ul>
-          <div class="link-area">
-            <div class="url-badge">
-              <i class="fas fa-link"></i>
-              <span>https://zamil98.github.io/Febrication_work//</span>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="txnId">Transaction / UTR ID <span class="required">*</span></label>
+                <input type="text" id="txnId" placeholder="UPI transaction reference" required>
+              </div>
+              <div class="form-group">
+                <label for="paymentDate">Payment Date <span class="required">*</span></label>
+                <input type="date" id="paymentDate" required>
+              </div>
             </div>
-            <a href="https://zamil98.github.io/Febrication_work/" target="_blank" rel="noopener noreferrer" class="btn-test">
-              <i class="fas fa-flask"></i> Test Fabrication Software
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
 
+            <div class="form-group">
+              <label for="product">Product Purchased <span class="required">*</span></label>
+              <select id="product" required>
+                <option value="">— Select product —</option>
+                <option value="Worker Attendance Software">Worker Attendance Software</option>
+                <option value="GST Accounting Software">GST Accounting Software</option>
+                <option value="Fabrication Work Manager">Fabrication Work Manager</option>
+                <option value="All Three (Combo)">All Three (Combo)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Additional Notes (optional)</label>
+              <textarea id="notes" placeholder="Any additional information..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <i class="fas fa-paper-plane"></i> Submit Payment Proof
+            </button>
+
+            <div class="form-status" id="formStatus"></div>
+
+          </form>
+        </div>
+
+      </div>
     </div>
 
-    <!-- footnote -->
-    <div class="footnote">
-      <i class="fas fa-bolt"></i> All three applications are live and free to test. All data stays in your browser (or chosen folder) — no sign-up required.
-      <br>Built with <i class="fas fa-heart"></i> for small businesses, contractors &amp; fabricators.
-    </div>
   </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      var UPI_ID = 's6154632725482301@slc';
+      var PAYEE_NAME = 'Sumetech';
+      var EMAIL_TO = 'sumetech98@gmail.com';
+      var qrGenerated = false;
+
+      // -------- Navigation --------
+      function showPaymentPage() {
+        var mainPage = document.getElementById('mainPage');
+        var paymentPage = document.getElementById('paymentPage');
+        if (!mainPage || !paymentPage) return;
+
+        mainPage.style.display = 'none';
+        paymentPage.style.display = 'block';
+        window.scrollTo(0, 0);
+        generateQR();
+      }
+
+      function showMainPage() {
+        var mainPage = document.getElementById('mainPage');
+        var paymentPage = document.getElementById('paymentPage');
+        if (!mainPage || !paymentPage) return;
+
+        paymentPage.style.display = 'none';
+        mainPage.style.display = 'block';
+        window.scrollTo(0, 0);
+      }
+
+      // -------- QR Code --------
+      function generateQR() {
+        if (qrGenerated) return;
+        qrGenerated = true;
+
+        var qrImage = document.getElementById('qrImage');
+        var fallbackIcon = document.getElementById('qrFallbackIcon');
+        if (!qrImage || !fallbackIcon) return;
+
+        var upiLink = 'upi://pay?pa=' + encodeURIComponent(UPI_ID) +
+                      '&pn=' + encodeURIComponent(PAYEE_NAME) + '&cu=INR';
+        var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' +
+                    encodeURIComponent(upiLink);
+
+        qrImage.onload = function () {
+          qrImage.style.display = 'block';
+          fallbackIcon.style.display = 'none';
+        };
+        qrImage.onerror = function () {
+          qrImage.style.display = 'none';
+          fallbackIcon.style.display = 'block';
+        };
+        qrImage.src = qrUrl;
+      }
+
+      // -------- Copy UPI --------
+      function copyUpiId() {
+        var upiTextEl = document.getElementById('upiIdText');
+        var copyBtn = document.getElementById('copyBtn');
+        if (!upiTextEl || !copyBtn) return;
+
+        var upiText = upiTextEl.textContent || upiTextEl.innerText;
+
+        function onSuccess() {
+          copyBtn.classList.add('copied');
+          copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          setTimeout(function () {
+            copyBtn.classList.remove('copied');
+            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+          }, 2000);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(upiText).then(onSuccess).catch(function () {
+            fallbackCopy(upiText, onSuccess);
+          });
+        } else {
+          fallbackCopy(upiText, onSuccess);
+        }
+      }
+
+      function fallbackCopy(text, callback) {
+        var textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.top = '-1000px';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(textArea);
+        if (callback) callback();
+      }
+
+      // -------- Submit Form --------
+      function submitProof(event) {
+        if (event) event.preventDefault();
+
+        var submitBtn = document.getElementById('submitBtn');
+        var formStatus = document.getElementById('formStatus');
+        if (!submitBtn || !formStatus) return;
+
+        var fullName = (document.getElementById('fullName').value || '').trim();
+        var mobile = (document.getElementById('mobile').value || '').trim();
+        var email = (document.getElementById('email').value || '').trim();
+        var amount = (document.getElementById('amount').value || '').trim();
+        var txnId = (document.getElementById('txnId').value || '').trim();
+        var paymentDate = document.getElementById('paymentDate').value || '';
+        var product = document.getElementById('product').value || '';
+        var notes = (document.getElementById('notes').value || '').trim();
+
+        if (!fullName || !mobile || !email || !amount || !txnId || !paymentDate || !product) {
+          formStatus.className = 'form-status error';
+          formStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please fill all required fields.';
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        formStatus.className = 'form-status';
+        formStatus.style.display = 'none';
+
+        var subject = 'Payment Proof - ' + product + ' - ' + fullName;
+        var body =
+          'NEW PAYMENT PROOF SUBMISSION\n' +
+          '=============================\n\n' +
+          'Name:           ' + fullName + '\n' +
+          'Mobile:         ' + mobile + '\n' +
+          'Email:          ' + email + '\n' +
+          'Amount Paid:    Rs. ' + amount + '\n' +
+          'Transaction ID: ' + txnId + '\n' +
+          'Payment Date:   ' + paymentDate + '\n' +
+          'Product:        ' + product + '\n' +
+          'Notes:          ' + (notes || 'N/A') + '\n\n' +
+          '=============================\n' +
+          'Paid to UPI: ' + UPI_ID + '\n' +
+          'Submitted from Sumetech website.';
+
+        var mailtoLink = 'mailto:' + EMAIL_TO +
+                         '?subject=' + encodeURIComponent(subject) +
+                         '&body=' + encodeURIComponent(body);
+
+        window.location.href = mailtoLink;
+
+        setTimeout(function () {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Payment Proof';
+
+          formStatus.className = 'form-status success';
+          formStatus.innerHTML = '<i class="fas fa-check-circle"></i> Your email client has opened. Please send the email to complete your submission. If it didn\'t open, email us directly at ' + EMAIL_TO;
+
+          document.getElementById('paymentProofForm').reset();
+        }, 1500);
+      }
+
+      // -------- Bind Events --------
+      function bindEvents() {
+        var buyBtn = document.getElementById('buyNowBtn');
+        var backBtn = document.getElementById('backBtn');
+        var copyBtn = document.getElementById('copyBtn');
+        var form = document.getElementById('paymentProofForm');
+
+        if (buyBtn) buyBtn.onclick = showPaymentPage;
+        if (backBtn) backBtn.onclick = showMainPage;
+        if (copyBtn) copyBtn.onclick = copyUpiId;
+        if (form) form.onsubmit = submitProof;
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bindEvents);
+      } else {
+        bindEvents();
+      }
+
+    })();
+  </script>
+
 </body>
 </html>
