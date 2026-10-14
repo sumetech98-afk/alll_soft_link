@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumetech98 · Three smart tools for your business</title>
+  <!-- Font Awesome for icons (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f9faff 0%, #eef2f9 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1500px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* header */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0, 112, 243, 0.1);
+      color: #0070f3;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      padding: 0.35rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(0, 112, 243, 0.2);
+    }
+
+    .header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #0b1b32;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .header h1 i {
+      color: #0070f3;
+      font-size: 2.6rem;
+      margin-right: 8px;
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #3a4c66;
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    /* cards grid */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1 1 380px;
+      max-width: 500px;
+      min-width: 340px;
+      background: #ffffff;
+      border-radius: 36px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 8px 20px -8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(2px);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 35px 60px -15px rgba(0, 80, 200, 0.25), 0 10px 25px -8px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header {
+      padding: 2rem 2rem 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .icon-bg {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      flex-shrink: 0;
+      box-shadow: 0 12px 18px -8px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon-bg.attend {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+    }
+
+    .icon-bg.gst {
+      background: linear-gradient(135deg, #0f7b3e, #0fa958);
+    }
+
+    .icon-bg.fabrication {
+      background: linear-gradient(135deg, #b45309, #d97706);
+    }
+
+    .card-header h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0b1b32;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .card-header .sub {
+      font-size: 0.9rem;
+      color: #5b6f8c;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .card-body {
+      padding: 0 2rem 1.5rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex: 1;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 0.55rem 0;
+      font-size: 1rem;
+      color: #23344d;
+      border-bottom: 1px solid #ecf1f9;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list i {
+      color: #0070f3;
+      font-size: 1.1rem;
+      margin-top: 3px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .attend .feature-list i {
+      color: #1e3c72;
+    }
+
+    .gst .feature-list i {
+      color: #0f7b3e;
+    }
+
+    .fabrication .feature-list i {
+      color: #b45309;
+    }
+
+    /* link area */
+    .link-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: auto;
+    }
+
+    .url-badge {
+      background: #f0f4fe;
+      padding: 0.6rem 1rem;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      color: #1f3a6b;
+      word-break: break-all;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #d9e2f0;
+    }
+
+    .url-badge i {
+      color: #556b8a;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .url-badge span {
+      font-family: 'SF Mono', 'Menlo', monospace;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .btn-test {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #0b1b32;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 22px -8px rgba(0, 0, 0, 0.25);
+      letter-spacing: 0.3px;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-test i {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+
+    .btn-test:hover {
+      background: #142b4b;
+      transform: scale(1.01);
+      box-shadow: 0 20px 30px -10px rgba(0, 70, 150, 0.5);
+    }
+
+    .btn-test:hover i {
+      transform: translateX(4px);
+    }
+
+    .attend .btn-test {
+      background: #1e3c72;
+    }
+
+    .attend .btn-test:hover {
+      background: #2a4f8a;
+    }
+
+    .gst .btn-test {
+      background: #0f7b3e;
+    }
+
+    .gst .btn-test:hover {
+      background: #139c4f;
+    }
+
+    .fabrication .btn-test {
+      background: #b45309;
+    }
+
+    .fabrication .btn-test:hover {
+      background: #d97706;
+    }
+
+    .footnote {
+      text-align: center;
+      margin-top: 3.5rem;
+      font-size: 0.9rem;
+      color: #6d7f99;
+      border-top: 1px solid #d9e2f0;
+      padding-top: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footnote i {
+      color: #ff6b6b;
+      margin: 0 4px;
+    }
+
+    @media (max-width: 1200px) {
+      .card {
+        flex: 1 1 340px;
+        max-width: 480px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      .card-header {
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
+      }
+      .card-body {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+      }
+      .icon-bg {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+      }
+      .card-header h2 {
+        font-size: 1.5rem;
+      }
+      .btn-test {
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
+      }
+      body {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .card {
+        border-radius: 28px;
+        min-width: 100%;
+      }
+      .feature-list li {
+        font-size: 0.9rem;
+      }
+      .url-badge {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="badge"><i class="fas fa-rocket" style="margin-right: 6px;"></i> 
+      <h1>
+        <i class="fas fa-cubes"></i> Sumetech98 Suite
+      </h1>
+      <div class="subhead">
+        Attendance & payroll automation · GST accounting · Fabrication work manager — all ready to test. Click any button below to open the live software.
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards">
+
+      <!-- CARD 1: Worker / Attendance Software -->
+      <div class="card attend">
+        <div class="card-header">
+          <div class="icon-bg attend">
+            <i class="fas fa-hard-hat"></i>
+          </div>
+          <div>
+            <h2>Worker Attendance</h2>
+            <div class="sub">Month-wise Excel · WhatsApp PDF</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> <span>Attendance, advances &amp; bonus tracking</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Auto month-wise Excel files (offline folder)</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>One-click WhatsApp PDF report</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Worker summary, overtime &amp; salary calculation</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>12h+ = working day, partial days paid</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>No data loss — auto restore on reload</span></li>
+          </ul>
+          <div class="link-area">
+            <div class="url-badge">
+              <i class="fas fa-link"></i>
+              <span>sumetech98-afk.github.io/worker_software/</span>
+            </div>
+            <a href="https://sumetech98-afk.github.io/worker_software/" target="_blank" rel="noopener noreferrer" class="btn-test">
+              <i class="fas fa-flask"></i> Test Attendance Software
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: GST Accounting Software -->
+      <div class="card gst">
+        <div class="card-header">
+          <div class="icon-bg gst">
+            <i class="fas fa-file-invoice-dollar"></i>
+          </div>
+          <div>
+            <h2>GST Accounting</h2>
+            <div class="sub">Invoices · Returns · Communication</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> <span>Create GST invoices &amp; manage parties</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Item / product catalog with GST slabs</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>GSTR-1 &amp; GSTR-3B style reports</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Payments tracking &amp; communication center</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>SMS / Email / WhatsApp broadcast to parties</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Company settings &amp; SMS integration (textbelt)</span></li>
+          </ul>
+          <div class="link-area">
+            <div class="url-badge">
+              <i class="fas fa-link"></i>
+              <span>sumetech98-afk.github.io/AccountGst/</span>
+            </div>
+            <a href="https://sumetech98-afk.github.io/AccountGst/" target="_blank" rel="noopener noreferrer" class="btn-test">
+              <i class="fas fa-flask"></i> Test GST Software
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: Fabrication Work Manager -->
+      <div class="card fabrication">
+        <div class="card-header">
+          <div class="icon-bg fabrication">
+            <i class="fas fa-industry"></i>
+          </div>
+          <div>
+            <h2>Fabrication Work</h2>
+            <div class="sub">Multi-company · Auto-save · PDF/WhatsApp</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> <span>Multi-company work records with auto-save</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Track weight, rate, base, GST &amp; grand total</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Advance &amp; payment records per company</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Month-wise summary &amp; business overview</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Excel export / import &amp; PDF report</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>WhatsApp PDF with ready message</span></li>
+          </ul>
+          <div class="link-area">
+            <div class="url-badge">
+              <i class="fas fa-link"></i>
+              <span>sumetech98-afk.github.io/Total-work-Details/</span>
+            </div>
+            <a href="https://sumetech98-afk.github.io/Total-work-Details/" target="_blank" rel="noopener noreferrer" class="btn-test">
+              <i class="fas fa-flask"></i> Test Fabrication Software
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- footnote -->
+    <div class="footnote">
+      <i class="fas fa-bolt"></i> All three applications are live and free to test. All data stays in your browser (or chosen folder) — no sign-up required.
+      <br>Built with <i class="fas fa-heart"></i> for small businesses, contractors &amp; fabricators.
+    </div>
+  </div>
+</body>
+</html>
