@@ -1,1043 +1,1106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sumetech · Three smart tools for your business</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
-    body {
-      background: linear-gradient(145deg, #f9faff 0%, #eef2f9 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 2rem 1.5rem;
-    }
-
-    .container {
-      max-width: 1500px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    /* ============ MAIN PAGE ============ */
-    #mainPage { display: block; }
-
-    .header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    /* Top row: badge + buy now */
-    .top-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.2rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(0, 112, 243, 0.1);
-      color: #0070f3;
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.3px;
-      padding: 0.5rem 1.1rem;
-      border-radius: 40px;
-      border: 1px solid rgba(0, 112, 243, 0.2);
-    }
-
-    .badge i { margin-right: 6px; }
-
-    /* ============ 3D BUY NOW BUTTON ============ */
-    .btn-buy-3d {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 0.55rem 1.4rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      color: #ffffff;
-      background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 45%, #ea580c 100%);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow:
-        0 6px 0 #b45309,
-        0 9px 12px rgba(234, 88, 12, 0.4),
-        inset 0 2px 2px rgba(255, 255, 255, 0.55),
-        inset 0 -3px 5px rgba(120, 53, 15, 0.35);
-      transition: all 0.12s ease;
-      text-shadow: 0 1px 1px rgba(120, 53, 15, 0.5);
-      font-family: inherit;
-      animation: pulseGlow 2.2s ease-in-out infinite;
-    }
-
-    .btn-buy-3d i {
-      font-size: 1rem;
-      filter: drop-shadow(0 1px 1px rgba(120, 53, 15, 0.5));
-      transition: transform 0.2s;
-    }
-
-    .btn-buy-3d:hover {
-      background: linear-gradient(180deg, #fcd34d 0%, #f59e0b 45%, #dc2626 100%);
-      transform: translateY(-2px);
-      box-shadow:
-        0 8px 0 #9a3412,
-        0 12px 18px rgba(234, 88, 12, 0.5),
-        inset 0 2px 2px rgba(255, 255, 255, 0.6),
-        inset 0 -3px 5px rgba(120, 53, 15, 0.4);
-    }
-
-    .btn-buy-3d:active {
-      transform: translateY(4px);
-      box-shadow:
-        0 2px 0 #b45309,
-        0 3px 6px rgba(234, 88, 12, 0.4),
-        inset 0 2px 3px rgba(120, 53, 15, 0.5);
-    }
-
-    .btn-buy-3d:hover i { transform: translateX(3px); }
-
-    /* Subtle glow animation */
-    @keyframes pulseGlow {
-      0%, 100% {
-        filter: drop-shadow(0 0 0 rgba(251, 191, 36, 0));
-      }
-      50% {
-        filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.7));
-      }
-    }
-
-    .header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #0b1b32;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .header h1 i {
-      color: #0070f3;
-      font-size: 2.6rem;
-      margin-right: 8px;
-    }
-
-    .subhead {
-      font-size: 1.2rem;
-      color: #3a4c66;
-      max-width: 800px;
-      margin: 0 auto;
-      font-weight: 400;
-      opacity: 0.9;
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    .card {
-      flex: 1 1 380px;
-      max-width: 500px;
-      min-width: 340px;
-      background: #ffffff;
-      border-radius: 36px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 8px 20px -8px rgba(0, 0, 0, 0.05);
-      transition: transform 0.25s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 35px 60px -15px rgba(0, 80, 200, 0.25), 0 10px 25px -8px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-header {
-      padding: 2rem 2rem 1.2rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .icon-bg {
-      width: 60px;
-      height: 60px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: white;
-      flex-shrink: 0;
-      box-shadow: 0 12px 18px -8px rgba(0, 0, 0, 0.2);
-    }
-
-    .icon-bg.attend { background: linear-gradient(135deg, #1e3c72, #2a5298); }
-    .icon-bg.gst { background: linear-gradient(135deg, #0f7b3e, #0fa958); }
-    .icon-bg.fabrication { background: linear-gradient(135deg, #b45309, #d97706); }
-
-    .card-header h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #0b1b32;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    .card-header .sub {
-      font-size: 0.9rem;
-      color: #5b6f8c;
-      font-weight: 500;
-      margin-top: 4px;
-    }
-
-    .card-body {
-      padding: 0 2rem 1.5rem 2rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .feature-list {
-      list-style: none;
-      margin-bottom: 2rem;
-      flex: 1;
-    }
-
-    .feature-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 0.55rem 0;
-      font-size: 1rem;
-      color: #23344d;
-      border-bottom: 1px solid #ecf1f9;
-    }
-
-    .feature-list li:last-child { border-bottom: none; }
-
-    .feature-list i {
-      color: #0070f3;
-      font-size: 1.1rem;
-      margin-top: 3px;
-      width: 20px;
-      text-align: center;
-    }
-
-    .attend .feature-list i { color: #1e3c72; }
-    .gst .feature-list i { color: #0f7b3e; }
-    .fabrication .feature-list i { color: #b45309; }
-
-    .link-area {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-top: auto;
-    }
-
-    .url-badge {
-      background: #f0f4fe;
-      padding: 0.6rem 1rem;
-      border-radius: 60px;
-      font-size: 0.75rem;
-      color: #1f3a6b;
-      word-break: break-all;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid #d9e2f0;
-    }
-
-    .url-badge i {
-      color: #556b8a;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-
-    .url-badge span {
-      font-family: 'SF Mono', 'Menlo', monospace;
-      font-weight: 500;
-      opacity: 0.9;
-    }
-
-    .btn-test {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: #0b1b32;
-      color: white;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 1rem 2rem;
-      border-radius: 60px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      box-shadow: 0 12px 22px -8px rgba(0, 0, 0, 0.25);
-      letter-spacing: 0.3px;
-      width: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .btn-test i { font-size: 1.2rem; transition: transform 0.2s; }
-
-    .btn-test:hover {
-      background: #142b4b;
-      transform: scale(1.01);
-      box-shadow: 0 20px 30px -10px rgba(0, 70, 150, 0.5);
-    }
-
-    .btn-test:hover i { transform: translateX(4px); }
-
-    .attend .btn-test { background: #1e3c72; }
-    .attend .btn-test:hover { background: #2a4f8a; }
-    .gst .btn-test { background: #0f7b3e; }
-    .gst .btn-test:hover { background: #139c4f; }
-    .fabrication .btn-test { background: #b45309; }
-    .fabrication .btn-test:hover { background: #d97706; }
-
-    .footnote {
-      text-align: center;
-      margin-top: 3.5rem;
-      font-size: 0.9rem;
-      color: #6d7f99;
-      border-top: 1px solid #d9e2f0;
-      padding-top: 2rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .footnote i { color: #ff6b6b; margin: 0 4px; }
-
-    /* ============ PAYMENT PAGE ============ */
-    #paymentPage { display: none; }
-
-    .payment-page {
-      max-width: 700px;
-      width: 100%;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 40px;
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.2);
-      padding: 3rem 2.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-    }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #0070f3;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      cursor: pointer;
-      transition: gap 0.2s;
-      background: none;
-      border: none;
-      font-family: inherit;
-    }
-
-    .back-btn:hover { gap: 14px; }
-
-    .payment-page h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #0b1b32;
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-
-    .pay-sub {
-      text-align: center;
-      color: #5b6f8c;
-      font-size: 1.05rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .upi-section {
-      background: linear-gradient(135deg, #f0f4fe, #e8eeff);
-      border-radius: 28px;
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      border: 1px solid #d9e2f0;
-    }
-
-    .qr-placeholder {
-      width: 220px;
-      height: 220px;
-      background: #ffffff;
-      border-radius: 20px;
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px dashed #b0c4de;
-      box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-    }
-
-    .qr-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 8px;
-    }
-
-    .qr-placeholder i {
-      font-size: 4rem;
-      color: #b0c4de;
-    }
-
-    .upi-id-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #ffffff;
-      padding: 0.85rem 1.2rem;
-      border-radius: 60px;
-      border: 1px solid #d9e2f0;
-      max-width: 480px;
-      margin: 0 auto 0.5rem;
-      box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.06);
-      flex-wrap: wrap;
-    }
-
-    .upi-id-box i { color: #0070f3; font-size: 1.2rem; }
-
-    .upi-text {
-      font-family: 'SF Mono', 'Menlo', monospace;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #0b1b32;
-      letter-spacing: 0.3px;
-      user-select: all;
-      word-break: break-all;
-    }
-
-    .copy-btn {
-      background: #0070f3;
-      color: white;
-      border: none;
-      padding: 0.45rem 1rem;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-
-    .copy-btn:hover { background: #005bb5; }
-    .copy-btn.copied { background: #0f7b3e; }
-
-    .pay-note {
-      font-size: 0.9rem;
-      color: #6d7f99;
-      margin-top: 0.8rem;
-    }
-
-    /* ============ PROOF FORM ============ */
-    .proof-form-section { margin-top: 2rem; }
-
-    .proof-form-section h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0b1b32;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .proof-form-section h3 i { color: #f59e0b; }
-
-    .form-group { margin-bottom: 1.2rem; }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #23344d;
-      margin-bottom: 0.4rem;
-    }
-
-    .required { color: #ef4444; }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.85rem 1.2rem;
-      border-radius: 16px;
-      border: 1.5px solid #d9e2f0;
-      font-size: 1rem;
-      font-family: inherit;
-      background: #fafbfe;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      color: #0b1b32;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: #0070f3;
-      box-shadow: 0 0 0 4px rgba(0, 112, 243, 0.1);
-      background: #ffffff;
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .form-row .form-group { flex: 1; }
-
-    .btn-submit {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: linear-gradient(135deg, #0f7b3e, #0fa958);
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 1rem 2.5rem;
-      border-radius: 60px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 14px 28px -10px rgba(15, 123, 62, 0.5);
-      width: 100%;
-      margin-top: 0.5rem;
-      letter-spacing: 0.3px;
-    }
-
-    .btn-submit i { font-size: 1.2rem; }
-
-    .btn-submit:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 22px 35px -12px rgba(15, 123, 62, 0.7);
-    }
-
-    .btn-submit:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .form-status {
-      margin-top: 1rem;
-      padding: 1rem 1.2rem;
-      border-radius: 16px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: none;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .form-status.success {
-      display: flex;
-      background: #ecfdf5;
-      color: #0f7b3e;
-      border: 1px solid #a7f3d0;
-    }
-
-    .form-status.error {
-      display: flex;
-      background: #fef2f2;
-      color: #dc2626;
-      border: 1px solid #fecaca;
-    }
-
-    /* ============ RESPONSIVE ============ */
-    @media (max-width: 1200px) {
-      .card { flex: 1 1 340px; max-width: 480px; }
-    }
-
-    @media (max-width: 700px) {
-      .header h1 { font-size: 2rem; }
-      .card-header { padding: 1.5rem 1.5rem 1rem 1.5rem; }
-      .card-body { padding: 0 1.5rem 1.5rem 1.5rem; }
-      .icon-bg { width: 50px; height: 50px; font-size: 1.6rem; }
-      .card-header h2 { font-size: 1.5rem; }
-      .btn-test { font-size: 1rem; padding: 0.9rem 1.5rem; }
-      body { padding: 1.5rem 1rem; }
-      .payment-page { padding: 2rem 1.5rem; border-radius: 28px; }
-      .payment-page h2 { font-size: 1.7rem; }
-      .form-row { flex-direction: column; gap: 0; }
-      .upi-id-box { flex-wrap: wrap; padding: 0.8rem 1rem; }
-      .upi-text { font-size: 0.85rem; }
-      .btn-buy-3d { font-size: 0.85rem; padding: 0.5rem 1.1rem; }
-      .badge { font-size: 0.75rem; padding: 0.4rem 0.9rem; }
-    }
-
-    @media (max-width: 420px) {
-      .card { border-radius: 28px; min-width: 100%; }
-      .feature-list li { font-size: 0.9rem; }
-      .url-badge { font-size: 0.7rem; }
-      .payment-page { padding: 1.5rem 1rem; }
-      .payment-page h2 { font-size: 1.4rem; }
-      .upi-section { padding: 1.2rem; }
-      .upi-text { font-size: 0.75rem; }
-      .top-row { gap: 0.6rem; }
-      .btn-buy-3d { font-size: 0.78rem; padding: 0.45rem 1rem; gap: 6px; }
-      .badge { font-size: 0.7rem; padding: 0.35rem 0.8rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sume-Tech Software Solutions | GST, Attendance & Fabrication Software</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%231e3a8a'/><stop offset='1' stop-color='%233b82f6'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='62' font-family='Arial,sans-serif' font-size='42' font-weight='bold' fill='white' text-anchor='middle'>ST</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: #f8fafc; color: #1e293b; overflow-x: hidden; scroll-behavior: smooth; }
+
+/* ===== HEADER ===== */
+header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%); color: white; padding: 16px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(15,23,42,0.3); }
+.nav-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; box-shadow: 0 4px 14px rgba(16,185,129,0.4); color: white; }
+.logo-text h1 { font-size: 20px; font-weight: 800; letter-spacing: 0.3px; }
+.logo-text p { font-size: 11px; color: #c7d2fe; font-weight: 500; }
+nav { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+nav a { color: #e0e7ff; text-decoration: none; padding: 9px 15px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: all 0.2s; cursor: pointer; }
+nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+nav a.active { background: white; color: #1e3a8a; }
+.nav-cta { background: #10b981 !important; color: white !important; padding: 9px 20px !important; }
+.nav-cta:hover { background: #059669 !important; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(16,185,129,0.5); }
+
+/* ===== HERO ===== */
+.hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #7c3aed 100%); color: white; padding: 80px 24px 100px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: rgba(59,130,246,0.15); border-radius: 50%; }
+.hero::after { content: ''; position: absolute; bottom: -150px; left: -50px; width: 500px; height: 500px; background: rgba(124,58,237,0.15); border-radius: 50%; }
+.hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; margin-bottom: 24px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); }
+.hero h1 { font-size: 52px; font-weight: 900; line-height: 1.15; margin-bottom: 20px; letter-spacing: -1px; }
+.hero h1 span { background: linear-gradient(135deg, #10b981, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 18px; color: #c7d2fe; max-width: 680px; margin: 0 auto 36px; line-height: 1.7; }
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-btns button { padding: 16px 36px; font-size: 16px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s; font-family: inherit; }
+.btn-primary { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 8px 24px rgba(16,185,129,0.4); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(16,185,129,0.6); }
+.btn-outline { background: rgba(255,255,255,0.1); color: white; border: 2px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); }
+.btn-outline:hover { background: rgba(255,255,255,0.2); transform: translateY(-3px); }
+
+.hero-stats { display: flex; gap: 40px; justify-content: center; margin-top: 60px; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat .num { font-size: 36px; font-weight: 900; background: linear-gradient(135deg, #10b981, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-stat .label { font-size: 13px; color: #c7d2fe; margin-top: 4px; font-weight: 600; }
+
+/* ===== SECTIONS ===== */
+section { padding: 80px 24px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-head { text-align: center; margin-bottom: 56px; }
+.section-head .tag { display: inline-block; background: #eff6ff; color: #1e40af; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 800; letter-spacing: 1px; margin-bottom: 14px; text-transform: uppercase; }
+.section-head h2 { font-size: 38px; font-weight: 800; color: #0f172a; margin-bottom: 12px; letter-spacing: -0.5px; }
+.section-head p { color: #64748b; font-size: 17px; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+
+/* ===== PRODUCTS ===== */
+.products { background: #f8fafc; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; }
+.product-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(15,23,42,0.08); transition: all 0.3s; border: 2px solid transparent; position: relative; display: flex; flex-direction: column; }
+.product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(15,23,42,0.15); border-color: #3b82f6; }
+.product-header { padding: 32px 28px 24px; color: white; position: relative; overflow: hidden; }
+.product-header::after { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: 50%; }
+.product-header.gst { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+.product-header.attendance { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
+.product-header.fabrication { background: linear-gradient(135deg, #1a4d8f, #2563eb); }
+.product-icon { width: 64px; height: 64px; background: rgba(255,255,255,0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 16px; backdrop-filter: blur(10px); position: relative; z-index: 1; }
+.product-header h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; position: relative; z-index: 1; }
+.product-header p { font-size: 14px; opacity: 0.9; line-height: 1.5; position: relative; z-index: 1; }
+.product-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+.product-features { list-style: none; margin-bottom: 20px; }
+.product-features li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; font-size: 14px; color: #475569; line-height: 1.5; }
+.product-features li::before { content: '✓'; display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #d1fae5; color: #059669; border-radius: 50%; font-size: 12px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+.product-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; padding-top: 18px; border-top: 2px dashed #e2e8f0; }
+.product-price .amount { font-size: 32px; font-weight: 900; color: #1e3a8a; }
+.product-price .period { font-size: 14px; color: #64748b; font-weight: 600; }
+.product-price-monthly { font-size: 12px; color: #10b981; font-weight: 700; margin-bottom: 16px; }
+
+/* ==== DEMO CREDENTIALS BOX ==== */
+.demo-cred-box {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 1.5px solid #bae6fd;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.demo-cred-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+.demo-cred-title span {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.demo-cred-title .demo-tag {
+  font-size: 10px;
+  background: #0ea5e9;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 10px;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+}
+.demo-cred-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 12px;
+}
+.demo-cred-row + .demo-cred-row {
+  border-top: 1px dashed #bae6fd;
+}
+.demo-cred-label {
+  color: #0369a1;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+.demo-cred-value-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.demo-cred-value {
+  font-family: 'SF Mono', 'Menlo', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  background: white;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
+  word-break: break-all;
+  text-align: right;
+}
+.copy-mini-btn {
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.copy-mini-btn:hover { background: #0284c7; transform: scale(1.05); }
+.copy-mini-btn.copied { background: #10b981; }
+
+.product-btn { width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: inherit; color: white; margin-top: auto; }
+.product-btn.gst { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+.product-btn.attendance { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
+.product-btn.fabrication { background: linear-gradient(135deg, #1a4d8f, #2563eb); }
+.product-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30,58,138,0.3); }
+.popular-ribbon { position: absolute; top: 18px; right: -32px; background: #f59e0b; color: white; padding: 5px 40px; font-size: 11px; font-weight: 800; transform: rotate(45deg); letter-spacing: 1px; z-index: 2; }
+
+/* ===== FEATURES ===== */
+.features { background: white; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.feature-box { padding: 32px 26px; border-radius: 16px; background: #f8fafc; border: 1px solid #e2e8f0; transition: all 0.3s; text-align: center; }
+.feature-box:hover { background: white; box-shadow: 0 12px 30px rgba(15,23,42,0.1); transform: translateY(-4px); border-color: #3b82f6; }
+.feature-box .icon { width: 60px; height: 60px; margin: 0 auto 18px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+.feature-box h3 { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+.feature-box p { font-size: 14px; color: #64748b; line-height: 1.6; }
+
+/* ===== PRICING ===== */
+.pricing { background: linear-gradient(135deg, #f8fafc, #eff6ff); }
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.price-card { background: white; border-radius: 20px; padding: 32px 26px; box-shadow: 0 4px 20px rgba(15,23,42,0.08); border: 2px solid #e2e8f0; transition: all 0.3s; position: relative; }
+.price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15,23,42,0.15); border-color: #3b82f6; }
+.price-card.featured { border-color: #10b981; background: linear-gradient(180deg, #f0fdf4 0%, white 100%); }
+.price-card.featured::before { content: '⭐ MOST POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 5px 18px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; white-space: nowrap; }
+.price-card.ultimate { border-color: #f59e0b; background: linear-gradient(180deg, #fffbeb 0%, white 100%); }
+.price-card.ultimate::before { content: '🔥 BEST VALUE'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #f59e0b, #d97706); color: white; padding: 5px 18px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; white-space: nowrap; }
+.price-card h3 { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+.price-card .duration { font-size: 13px; color: #64748b; margin-bottom: 16px; font-weight: 600; }
+.price-display { margin-bottom: 8px; }
+.price-display .price-main { font-size: 38px; font-weight: 900; color: #1e3a8a; line-height: 1.1; }
+.price-display .price-main .per-month { font-size: 15px; color: #64748b; font-weight: 600; }
+.price-display .price-total { font-size: 13px; color: #64748b; margin-top: 6px; font-weight: 600; }
+.price-display .price-total b { color: #1e3a8a; }
+.price-card .save-tag { display: inline-block; background: #d1fae5; color: #065f46; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; margin: 10px 0 20px; }
+.price-card.ultimate .save-tag { background: #fef3c7; color: #92400e; }
+.price-card ul { list-style: none; margin-bottom: 24px; }
+.price-card ul li { padding: 7px 0; font-size: 13px; color: #475569; display: flex; gap: 8px; line-height: 1.5; }
+.price-card ul li::before { content: '✓'; color: #10b981; font-weight: 800; flex-shrink: 0; }
+.price-card .btn { width: 100%; padding: 13px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; border: none; transition: all 0.3s; font-family: inherit; }
+.price-card .btn-primary { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+.price-card .btn-secondary { background: #f1f5f9; color: #1e3a8a; border: 2px solid #e2e8f0; }
+.price-card .btn-ultimate { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+.price-card .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,0.15); }
+
+.starting-banner { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; border-radius: 16px; padding: 24px 32px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; box-shadow: 0 8px 24px rgba(30,58,138,0.25); }
+.starting-banner .sb-left { display: flex; align-items: center; gap: 16px; }
+.starting-banner .sb-icon { width: 56px; height: 56px; background: rgba(255,255,255,0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; backdrop-filter: blur(10px); }
+.starting-banner .sb-text h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+.starting-banner .sb-text p { font-size: 13px; color: #c7d2fe; }
+.starting-banner .sb-price { font-size: 34px; font-weight: 900; }
+.starting-banner .sb-price .small { font-size: 15px; font-weight: 600; opacity: 0.85; }
+
+/* ===== CONTACT ===== */
+.contact { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #7c3aed 100%); color: white; }
+.contact .section-head .tag { background: rgba(255,255,255,0.15); color: white; }
+.contact .section-head h2 { color: white; }
+.contact .section-head p { color: #c7d2fe; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+.contact-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); padding: 28px 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.15); text-align: center; transition: all 0.3s; cursor: pointer; text-decoration: none; color: white; display: block; }
+.contact-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-4px); border-color: rgba(255,255,255,0.3); }
+.contact-card .icon { width: 60px; height: 60px; margin: 0 auto 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+.contact-card .icon.call { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.contact-card .icon.wa { background: linear-gradient(135deg, #25D366, #128C7E); }
+.contact-card .icon.mail { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.contact-card h3 { font-size: 14px; font-weight: 600; opacity: 0.85; margin-bottom: 6px; }
+.contact-card p { font-size: 17px; font-weight: 800; }
+
+/* ===== FOOTER ===== */
+footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand h3 { color: white; font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; color: #94a3b8; }
+.footer-col h4 { color: white; font-size: 14px; font-weight: 800; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { padding: 6px 0; font-size: 14px; cursor: pointer; transition: color 0.2s; }
+.footer-col ul li:hover { color: #3b82f6; }
+.footer-bottom { padding-top: 24px; border-top: 1px solid #1e293b; text-align: center; font-size: 13px; color: #64748b; }
+
+/* ===== LOGIN MODAL ===== */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.7); z-index: 9999; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+.modal-overlay.active { display: flex; }
+.login-modal { background: white; border-radius: 20px; padding: 40px 36px; max-width: 440px; width: 100%; box-shadow: 0 25px 70px rgba(0,0,0,0.4); animation: modalIn 0.35s ease; max-height: 92vh; overflow-y: auto; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(-20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.login-modal .modal-head { text-align: center; margin-bottom: 28px; position: relative; }
+.login-modal .modal-head .close-btn { position: absolute; top: -12px; right: -12px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; color: #64748b; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.login-modal .modal-head .close-btn:hover { background: #e2e8f0; color: #0f172a; }
+.login-modal .modal-icon { width: 72px; height: 72px; margin: 0 auto 16px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+.login-modal .modal-icon.gst { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+.login-modal .modal-icon.attendance { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
+.login-modal .modal-icon.fabrication { background: linear-gradient(135deg, #1a4d8f, #2563eb); }
+.login-modal h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+.login-modal .subtitle { font-size: 13px; color: #64748b; }
+.login-modal .form-group { margin-bottom: 16px; }
+.login-modal label { display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 6px; }
+.login-modal input { width: 100%; padding: 13px 15px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 14px; font-family: inherit; transition: all 0.2s; }
+.login-modal input:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+.login-modal .login-submit { width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; color: white; margin-top: 8px; transition: all 0.2s; font-family: inherit; }
+.login-modal .login-submit.gst { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+.login-modal .login-submit.attendance { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
+.login-modal .login-submit.fabrication { background: linear-gradient(135deg, #1a4d8f, #2563eb); }
+.login-modal .login-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(30,58,138,0.35); }
+.login-modal .login-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+.login-modal .login-error { background: #fee2e2; color: #991b1b; padding: 11px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 14px; display: none; border-left: 3px solid #dc2626; }
+.login-modal .login-error.show { display: block; }
+.login-modal .login-success { background: #d1fae5; color: #065f46; padding: 11px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 14px; display: none; border-left: 3px solid #10b981; }
+.login-modal .login-success.show { display: block; }
+.login-modal .demo-info { margin-top: 18px; padding: 14px; background: #f8fafc; border-radius: 10px; font-size: 12px; color: #64748b; line-height: 1.7; border-left: 3px solid #3b82f6; }
+.login-modal .demo-info b { color: #1e3a8a; }
+.login-modal .help-link { text-align: center; margin-top: 16px; font-size: 13px; color: #64748b; }
+.login-modal .help-link a { color: #3b82f6; font-weight: 700; text-decoration: none; }
+
+/* ===== TOAST ===== */
+.toast { position: fixed; bottom: 24px; right: 24px; background: #10b981; color: white; padding: 14px 22px; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); font-size: 14px; font-weight: 600; opacity: 0; transform: translateY(20px); transition: all 0.3s; z-index: 10000; max-width: 360px; }
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.error { background: #dc2626; }
+
+/* ===== HELP FLOAT ===== */
+.help-float { position: fixed; bottom: 24px; left: 24px; background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; border-radius: 50px; padding: 14px 22px; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 20px rgba(16,185,129,0.45); z-index: 900; display: flex; align-items: center; gap: 8px; transition: all 0.2s; font-family: inherit; }
+.help-float:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(16,185,129,0.55); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 34px; }
+  .hero p { font-size: 15px; }
+  .section-head h2 { font-size: 28px; }
+  .nav-container { flex-direction: column; }
+  nav { justify-content: center; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .hero-stats { gap: 24px; }
+  .hero-stat .num { font-size: 28px; }
+  .starting-banner { padding: 20px; }
+  .starting-banner .sb-price { font-size: 26px; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .product-grid, .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .hero { padding: 50px 20px 70px; }
+  .hero h1 { font-size: 28px; }
+  .starting-banner .sb-left { flex-direction: column; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
 </head>
 <body>
 
-  <div class="container">
-
-    <!-- ==================== MAIN PAGE ==================== -->
-    <div id="mainPage">
-      <div class="header">
-
-        <!-- Top row: Live Demo badge + Buy Now 3D button side-by-side -->
-        <div class="top-row">
-          <div class="badge">
-            <i class="fas fa-rocket"></i> Live Demo Available
-          </div>
-          <button type="button" class="btn-buy-3d" id="buyNowBtn">
-            <i class="fas fa-shopping-cart"></i> Buy Now
-          </button>
-        </div>
-
-        <h1>
-          <i class="fas fa-cubes"></i> Powered by Sumetech
-        </h1>
-        <div class="subhead">
-          Attendance &amp; payroll automation · GST accounting · Fabrication work manager — all ready to test. Click any button below to open the live software.
-        </div>
-      </div>
-
-      <div class="cards">
-
-        <!-- CARD 1 -->
-        <div class="card attend">
-          <div class="card-header">
-            <div class="icon-bg attend"><i class="fas fa-hard-hat"></i></div>
-            <div>
-              <h2>Worker Attendance</h2>
-              <div class="sub">Month-wise Excel · WhatsApp PDF</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <ul class="feature-list">
-              <li><i class="fas fa-check-circle"></i> <span>Attendance, advances &amp; bonus tracking</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Auto month-wise Excel files (offline folder)</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>One-click WhatsApp PDF report</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Worker summary, overtime &amp; salary calculation</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>12h+ = working day, partial days paid</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>No data loss — auto restore on reload</span></li>
-            </ul>
-            <div class="link-area">
-              <div class="url-badge">
-                <i class="fas fa-link"></i>
-                <span> user id : zamilrja98@gmail.com </span>
-                <span> Password : zamil1234 </span>
-              </div>
-              <a href="https://workerattandace.blogspot.com/" target="_blank" rel="noopener noreferrer" class="btn-test">
-                <i class="fas fa-flask"></i> Test Attendance Software
-                <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="card gst">
-          <div class="card-header">
-            <div class="icon-bg gst"><i class="fas fa-file-invoice-dollar"></i></div>
-            <div>
-              <h2>GST Accounting</h2>
-              <div class="sub">Invoices · Returns · Communication</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <ul class="feature-list">
-              <li><i class="fas fa-check-circle"></i> <span>Create GST invoices &amp; manage parties</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Item / product catalog with GST slabs</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>GSTR-1 &amp; GSTR-3B style reports</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Payments tracking &amp; communication center</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>SMS / Email / WhatsApp broadcast to parties</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Company settings &amp; SMS integration (textbelt)</span></li>
-            </ul>
-            <div class="link-area">
-              <div class="url-badge">
-                <i class="fas fa-link"></i>
-                <span> user id : admin@gmail.com </span>
-                <span> password : admin1234 </span>
-              
-              </div>
-              <a href="https://gstaccount98.blogspot.com/" target="_blank" rel="noopener noreferrer" class="btn-test">
-                <i class="fas fa-flask"></i> Test GST Software
-                <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="card fabrication">
-          <div class="card-header">
-            <div class="icon-bg fabrication"><i class="fas fa-industry"></i></div>
-            <div>
-              <h2>Fabrication Work</h2>
-              <div class="sub">Multi-company · Auto-save · PDF/WhatsApp</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <ul class="feature-list">
-              <li><i class="fas fa-check-circle"></i> <span>Multi-company work records with auto-save</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Track weight, rate, base, GST &amp; grand total</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Advance &amp; payment records per company</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Month-wise summary &amp; business overview</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>Excel export / import &amp; PDF report</span></li>
-              <li><i class="fas fa-check-circle"></i> <span>WhatsApp PDF with ready message</span></li>
-            </ul>
-            <div class="link-area">
-              <div class="url-badge">
-                <i class="fas fa-link"></i>
-                <span> user id :admin </span>
-                <span> Password :admin123 </span>
-              </div>
-              <a href="https://febricationwork.blogspot.com/" target="_blank" rel="noopener noreferrer" class="btn-test">
-                <i class="fas fa-flask"></i> Test Fabrication Software
-                <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="footnote">
-        <i class="fas fa-bolt"></i> All three applications are live and free to test. All data stays in your browser (or chosen folder) — no sign-up required.
-        <br>Built with <i class="fas fa-heart"></i> for small businesses, contractors &amp; fabricators.
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="nav-container">
+    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div class="logo-icon">ST</div>
+      <div class="logo-text">
+        <h1>Sume-Tech Solutions</h1>
+        <p>Business Software Suite</p>
       </div>
     </div>
-
-    <!-- ==================== PAYMENT PAGE ==================== -->
-    <div id="paymentPage">
-      <div class="payment-page">
-
-        <button type="button" class="back-btn" id="backBtn">
-          <i class="fas fa-arrow-left"></i> Back to home
-        </button>
-
-        <h2>
-          <i class="fas fa-credit-card" style="color: #f59e0b; margin-right: 10px;"></i>
-          Complete Your Purchase
-        </h2>
-        <p class="pay-sub">Pay via UPI and submit your payment proof below</p>
-
-        <!-- UPI Section -->
-        <div class="upi-section">
-          <div class="qr-placeholder">
-            <img id="qrImage" src="" alt="UPI QR Code" style="display: none;">
-            <i class="fas fa-qrcode" id="qrFallbackIcon"></i>
-          </div>
-          <p style="font-weight: 600; color: #0b1b32; margin-bottom: 0.8rem;">Scan QR or pay to UPI ID</p>
-          <div class="upi-id-box">
-            <i class="fas fa-mobile-alt"></i>
-            <span class="upi-text" id="upiIdText">s6154632725482301@slc</span>
-            <button type="button" class="copy-btn" id="copyBtn">
-              <i class="fas fa-copy"></i> Copy
-            </button>
-          </div>
-          <p class="pay-note">
-            <i class="fas fa-info-circle"></i> After payment, fill the form below with your transaction details.
-          </p>
-        </div>
-
-        <!-- Proof Form -->
-        <div class="proof-form-section">
-          <h3><i class="fas fa-file-invoice"></i> Payment Proof Submission</h3>
-          <form id="paymentProofForm">
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fullName">Full Name <span class="required">*</span></label>
-                <input type="text" id="fullName" placeholder="Your full name" required>
-              </div>
-              <div class="form-group">
-                <label for="mobile">Mobile Number <span class="required">*</span></label>
-                <input type="tel" id="mobile" placeholder="10-digit mobile" pattern="[0-9]{10,12}" required>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email Address <span class="required">*</span></label>
-                <input type="email" id="email" placeholder="you@example.com" required>
-              </div>
-              <div class="form-group">
-                <label for="amount">Amount Paid (₹) <span class="required">*</span></label>
-                <input type="number" id="amount" placeholder="e.g. 999" min="1" required>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="txnId">Transaction / UTR ID <span class="required">*</span></label>
-                <input type="text" id="txnId" placeholder="UPI transaction reference" required>
-              </div>
-              <div class="form-group">
-                <label for="paymentDate">Payment Date <span class="required">*</span></label>
-                <input type="date" id="paymentDate" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="product">Product Purchased <span class="required">*</span></label>
-              <select id="product" required>
-                <option value="">— Select product —</option>
-                <option value="Worker Attendance Software">Worker Attendance Software</option>
-                <option value="GST Accounting Software">GST Accounting Software</option>
-                <option value="Fabrication Work Manager">Fabrication Work Manager</option>
-                <option value="All Three (Combo)">All Three (Combo)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="notes">Additional Notes (optional)</label>
-              <textarea id="notes" placeholder="Any additional information..."></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit" id="submitBtn">
-              <i class="fas fa-paper-plane"></i> Submit Payment Proof
-            </button>
-
-            <div class="form-status" id="formStatus"></div>
-
-          </form>
-        </div>
-
-      </div>
-    </div>
-
+    <nav>
+      <a onclick="scrollToSection('home')" class="active">🏠 Home</a>
+      <a onclick="scrollToSection('products')">📦 Products</a>
+      <a onclick="scrollToSection('features')">✨ Features</a>
+      <a onclick="scrollToSection('pricing')">💎 Pricing</a>
+      <a onclick="scrollToSection('contact')">📞 Contact</a>
+      <a onclick="openLogin('gst')" class="nav-cta">🔓 Login</a>
+    </nav>
   </div>
+</header>
 
-  <!-- ==================== JAVASCRIPT ==================== -->
-  <script>
-    (function () {
-      'use strict';
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">🚀 #1 Business Software Provider in India</div>
+    <h1>All Your Business Needs,<br><span>One Powerful Suite</span></h1>
+    <p>GST Accounting, Attendance Management aur Fabrication Work Manager — teeno premium software ek hi jagah. Empowering 500+ Indian businesses with smart automation.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollToSection('products')">📦 Explore Products</button>
+      <button class="btn-outline" onclick="scrollToSection('contact')">📞 Talk to Sales</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">500+</div><div class="label">Happy Clients</div></div>
+      <div class="hero-stat"><div class="num">3</div><div class="label">Premium Products</div></div>
+      <div class="hero-stat"><div class="num">99.9%</div><div class="label">Uptime</div></div>
+      <div class="hero-stat"><div class="num">24/7</div><div class="label">Support</div></div>
+    </div>
+  </div>
+</section>
 
-      var UPI_ID = 's6154632725482301@slc';
-      var PAYEE_NAME = 'Sumetech';
-      var EMAIL_TO = 'sumetech98@gmail.com';
-      var qrGenerated = false;
+<!-- ================= PRODUCTS ================= -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="tag">Our Products</span>
+      <h2>Powerful Software for Every Business</h2>
+      <p>Choose the software that fits your business needs. Demo credentials are visible on each card — try them now!</p>
+    </div>
+    <div class="product-grid">
 
-      // -------- Navigation --------
-      function showPaymentPage() {
-        var mainPage = document.getElementById('mainPage');
-        var paymentPage = document.getElementById('paymentPage');
-        if (!mainPage || !paymentPage) return;
+      <!-- GST Accounting -->
+      <div class="product-card">
+        <div class="popular-ribbon">BEST SELLER</div>
+        <div class="product-header gst">
+          <div class="product-icon">📊</div>
+          <h3>GST Accounting</h3>
+          <p>Complete GST invoicing, filing & reports for businesses</p>
+        </div>
+        <div class="product-body">
+          <ul class="product-features">
+            <li>GST Invoice & Billing System</li>
+            <li>GSTR-1, GSTR-3B Return Filing</li>
+            <li>Parties, Items, Payments Management</li>
+            <li>WhatsApp, SMS & Email Integration</li>
+            <li>PDF Invoice Generation</li>
+            <li>GST Reports & Analytics</li>
+          </ul>
+          <div class="product-price">
+            <span class="amount">₹1,000</span>
+            <span class="period">/ month</span>
+          </div>
+          <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
 
-        mainPage.style.display = 'none';
-        paymentPage.style.display = 'block';
-        window.scrollTo(0, 0);
-        generateQR();
-      }
+          <!-- ===== DEMO CREDENTIALS ===== -->
+          <div class="demo-cred-box">
+            <div class="demo-cred-title">
+              <span>🔑 Demo Login</span>
+              <span class="demo-tag">TRY NOW</span>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">User ID</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="gst-user">admin@gstsoftware.com</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin@gstsoftware.com" title="Copy User ID">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Password</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="gst-pass">Admin@123456</span>
+                <button type="button" class="copy-mini-btn" data-copy="Admin@123456" title="Copy Password">📋</button>
+              </div>
+            </div>
+          </div>
 
-      function showMainPage() {
-        var mainPage = document.getElementById('mainPage');
-        var paymentPage = document.getElementById('paymentPage');
-        if (!mainPage || !paymentPage) return;
+          <button class="product-btn gst" onclick="openLogin('gst')">🔓 Login / Get Started</button>
+        </div>
+      </div>
 
-        paymentPage.style.display = 'none';
-        mainPage.style.display = 'block';
-        window.scrollTo(0, 0);
-      }
+      <!-- Attendance System -->
+      <div class="product-card">
+        <div class="product-header attendance">
+          <div class="product-icon">👷</div>
+          <h3>Attendance System</h3>
+          <p>Worker attendance, salary & payroll automation</p>
+        </div>
+        <div class="product-body">
+          <ul class="product-features">
+            <li>Worker & Attendance Management</li>
+            <li>Auto Salary + OT Calculation</li>
+            <li>Advance & Bonus Tracking</li>
+            <li>PDF Reports on WhatsApp</li>
+            <li>Month-wise Excel Export</li>
+            <li>Multi-device Cloud Sync</li>
+          </ul>
+          <div class="product-price">
+            <span class="amount">₹1,000</span>
+            <span class="period">/ month</span>
+          </div>
+          <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
 
-      // -------- QR Code --------
-      function generateQR() {
-        if (qrGenerated) return;
-        qrGenerated = true;
+          <!-- ===== DEMO CREDENTIALS ===== -->
+          <div class="demo-cred-box">
+            <div class="demo-cred-title">
+              <span>🔑 Demo Login</span>
+              <span class="demo-tag">TRY NOW</span>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">User ID</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="att-user">admin@attendance.com</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin@attendance.com" title="Copy User ID">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Password</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="att-pass">admin123</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin123" title="Copy Password">📋</button>
+              </div>
+            </div>
+          </div>
 
-        var qrImage = document.getElementById('qrImage');
-        var fallbackIcon = document.getElementById('qrFallbackIcon');
-        if (!qrImage || !fallbackIcon) return;
+          <button class="product-btn attendance" onclick="openLogin('attendance')">🔓 Login / Get Started</button>
+        </div>
+      </div>
 
-        var upiLink = 'upi://pay?pa=' + encodeURIComponent(UPI_ID) +
-                      '&pn=' + encodeURIComponent(PAYEE_NAME) + '&cu=INR';
-        var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' +
-                    encodeURIComponent(upiLink);
+      <!-- Fabrication Manager -->
+      <div class="product-card">
+        <div class="product-header fabrication">
+          <div class="product-icon">🏗️</div>
+          <h3>Fabrication Work Manager</h3>
+          <p>Multi-company fabrication records with GST</p>
+        </div>
+        <div class="product-body">
+          <ul class="product-features">
+            <li>Multi-Company Management</li>
+            <li>Work, Advance & Payment Records</li>
+            <li>Auto GST Calculation (5/12/18/28%)</li>
+            <li>Excel & PDF Export</li>
+            <li>WhatsApp Sharing with PDF</li>
+            <li>Auto-Save to Local Folder</li>
+          </ul>
+          <div class="product-price">
+            <span class="amount">₹1,000</span>
+            <span class="period">/ month</span>
+          </div>
+          <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
 
-        qrImage.onload = function () {
-          qrImage.style.display = 'block';
-          fallbackIcon.style.display = 'none';
-        };
-        qrImage.onerror = function () {
-          qrImage.style.display = 'none';
-          fallbackIcon.style.display = 'block';
-        };
-        qrImage.src = qrUrl;
-      }
+          <!-- ===== DEMO CREDENTIALS ===== -->
+          <div class="demo-cred-box">
+            <div class="demo-cred-title">
+              <span>🔑 Demo Login</span>
+              <span class="demo-tag">TRY NOW</span>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">User ID</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="fab-user">admin</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin" title="Copy User ID">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Password</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="fab-pass">admin123</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin123" title="Copy Password">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Alt User</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="fab-user2">user1year</span>
+                <button type="button" class="copy-mini-btn" data-copy="user1year" title="Copy Alt User ID">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Alt Pass</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="fab-pass2">yearpass</span>
+                <button type="button" class="copy-mini-btn" data-copy="yearpass" title="Copy Alt Password">📋</button>
+              </div>
+            </div>
+          </div>
 
-      // -------- Copy UPI --------
-      function copyUpiId() {
-        var upiTextEl = document.getElementById('upiIdText');
-        var copyBtn = document.getElementById('copyBtn');
-        if (!upiTextEl || !copyBtn) return;
+          <button class="product-btn fabrication" onclick="openLogin('fabrication')">🔓 Login / Get Started</button>
+        </div>
+      </div>
 
-        var upiText = upiTextEl.textContent || upiTextEl.innerText;
+    </div>
+  </div>
+</section>
 
-        function onSuccess() {
-          copyBtn.classList.add('copied');
-          copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-          setTimeout(function () {
-            copyBtn.classList.remove('copied');
-            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-          }, 2000);
+<!-- ================= FEATURES ================= -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="tag">Why Choose Us</span>
+      <h2>Features That Set Us Apart</h2>
+      <p>Built with cutting-edge technology, designed for Indian businesses</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-box">
+        <div class="icon">☁️</div>
+        <h3>Cloud Sync</h3>
+        <p>Your data is safe and synced across all devices in real-time with Firebase cloud.</p>
+      </div>
+      <div class="feature-box">
+        <div class="icon">📱</div>
+        <h3>Mobile Friendly</h3>
+        <p>Access your business data anywhere, anytime from mobile, tablet or computer.</p>
+      </div>
+      <div class="feature-box">
+        <div class="icon">🔒</div>
+        <h3>Bank-Level Security</h3>
+        <p>Your data is protected with enterprise-grade encryption and secure authentication.</p>
+      </div>
+      <div class="feature-box">
+        <div class="icon">📊</div>
+        <h3>Excel & PDF Export</h3>
+        <p>Download professional reports in Excel or PDF format with a single click.</p>
+      </div>
+      <div class="feature-box">
+        <div class="icon">💬</div>
+        <h3>WhatsApp Integration</h3>
+        <p>Send invoices and reports directly on WhatsApp to your clients instantly.</p>
+      </div>
+      <div class="feature-box">
+        <div class="icon">🚀</div>
+        <h3>Auto Updates</h3>
+        <p>Get new features and improvements automatically without any manual downloads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="tag">Pricing Plans</span>
+      <h2>Simple, Transparent Pricing</h2>
+      <p>Starting at just ₹1,000/month. Save more with longer plans!</p>
+    </div>
+
+    <div class="starting-banner">
+      <div class="sb-left">
+        <div class="sb-icon">💎</div>
+        <div class="sb-text">
+          <h3>Start from just ₹1,000/month</h3>
+          <p>No hidden charges • Cancel anytime • Lifetime updates</p>
+        </div>
+      </div>
+      <div class="sb-price">₹1,000<span class="small">/month</span></div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Monthly Plan -->
+      <div class="price-card">
+        <h3>Monthly</h3>
+        <div class="duration">1 Month Access</div>
+        <div class="price-display">
+          <div class="price-main">₹1,000<span class="per-month">/mo</span></div>
+          <div class="price-total">Total: <b>₹1,000</b></div>
+        </div>
+        <span class="save-tag">Entry Level</span>
+        <ul>
+          <li>Full software access</li>
+          <li>Cloud sync</li>
+          <li>Email support</li>
+          <li>Basic reports</li>
+          <li>Excel/PDF export</li>
+        </ul>
+        <button class="btn btn-secondary" onclick="openLogin('gst')">Get Started</button>
+      </div>
+
+      <!-- Quarterly -->
+      <div class="price-card">
+        <h3>3 Months</h3>
+        <div class="duration">Quarterly Plan</div>
+        <div class="price-display">
+          <div class="price-main">₹900<span class="per-month">/mo</span></div>
+          <div class="price-total">Total: <b>₹2,700</b></div>
+        </div>
+        <span class="save-tag">Save ₹300</span>
+        <ul>
+          <li>Everything in Monthly</li>
+          <li>Priority support</li>
+          <li>Advanced reports</li>
+          <li>WhatsApp integration</li>
+          <li>SMS notifications</li>
+        </ul>
+        <button class="btn btn-secondary" onclick="openLogin('gst')">Get Started</button>
+      </div>
+
+      <!-- 1 Year - Featured -->
+      <div class="price-card featured">
+        <h3>1 Year ⭐</h3>
+        <div class="duration">Annual Plan (Best Value)</div>
+        <div class="price-display">
+          <div class="price-main">₹500<span class="per-month">/mo</span></div>
+          <div class="price-total">Total: <b>₹6,000</b> <span style="text-decoration:line-through; color:#94a3b8;">₹12,000</span></div>
+        </div>
+        <span class="save-tag">Save ₹6,000 (50% OFF)</span>
+        <ul>
+          <li>Everything in 3 Months</li>
+          <li>All 3 software included</li>
+          <li>Free lifetime updates</li>
+          <li>Dedicated account manager</li>
+          <li>Priority WhatsApp support</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openLogin('gst')">Best Value</button>
+      </div>
+
+      <!-- 2 Years -->
+      <div class="price-card">
+        <h3>2 Years</h3>
+        <div class="duration">Biennial Plan</div>
+        <div class="price-display">
+          <div class="price-main">₹400<span class="per-month">/mo</span></div>
+          <div class="price-total">Total: <b>₹9,600</b> <span style="text-decoration:line-through; color:#94a3b8;">₹24,000</span></div>
+        </div>
+        <span class="save-tag">Save ₹14,400 (60% OFF)</span>
+        <ul>
+          <li>Everything in 1 Year</li>
+          <li>Free priority updates</li>
+          <li>VIP support channel</li>
+          <li>Custom report builder</li>
+          <li>API access</li>
+        </ul>
+        <button class="btn btn-secondary" onclick="openLogin('gst')">Get Started</button>
+      </div>
+
+      <!-- 5 Years - Ultimate -->
+      <div class="price-card ultimate">
+        <h3>5 Years 🔥</h3>
+        <div class="duration">Ultimate Plan</div>
+        <div class="price-display">
+          <div class="price-main">₹1,000<span class="per-month">/mo</span></div>
+          <div class="price-total">Total: <b>₹60,000</b> (₹1,000 × 60 months)</div>
+        </div>
+        <span class="save-tag">Best Long-Term Value</span>
+        <ul>
+          <li>Everything in 2 Years</li>
+          <li>Lifetime priority access</li>
+          <li>Free customizations</li>
+          <li>Personal account manager</li>
+          <li>On-site training included</li>
+        </ul>
+        <button class="btn btn-ultimate" onclick="openLogin('gst')">Ultimate Plan</button>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:36px; color:#64748b; font-size:14px; line-height:1.8;">
+      <p>✅ All prices are in Indian Rupees (₹) &nbsp;•&nbsp; ✅ GST extra as applicable &nbsp;•&nbsp; ✅ No setup fees</p>
+      <p style="margin-top:8px;">💡 <strong style="color:#1e3a8a;">Need a custom plan?</strong> Contact us for enterprise pricing — <a href="https://wa.me/917766007236" style="color:#10b981; font-weight:700; text-decoration:none;">Chat on WhatsApp</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="tag">Get In Touch</span>
+      <h2>Need Help? We're Here!</h2>
+      <p>Call, WhatsApp or email us — we respond within minutes</p>
+    </div>
+    <div class="contact-grid">
+      <a href="tel:+917709497236" class="contact-card">
+        <div class="icon call">📞</div>
+        <h3>Call Us</h3>
+        <p>+91 77094 97236</p>
+      </a>
+      <a href="https://wa.me/917766007236?text=Hello%2C%20mujhe%20aapke%20software%20ke%20baare%20me%20jaankari%20chahiye" target="_blank" class="contact-card">
+        <div class="icon wa">📱</div>
+        <h3>WhatsApp</h3>
+        <p>+91 77660 07236</p>
+      </a>
+      <a href="mailto:sumetech98@gmail.com?subject=Software%20Enquiry" class="contact-card">
+        <div class="icon mail">✉️</div>
+        <h3>Email Us</h3>
+        <p>sumetech98@gmail.com</p>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top:40px; font-size:14px; color:#c7d2fe;">
+      🕐 <strong style="color:white;">Support Hours:</strong> Monday - Saturday, 10 AM - 8 PM &nbsp; | &nbsp; 📱 WhatsApp 24/7 Available
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>🚀 Sume-Tech Solutions</h3>
+        <p>Empowering Indian businesses with smart software solutions since 2020. GST, Attendance & Fabrication management made simple.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li onclick="openLogin('gst')">GST Accounting</li>
+          <li onclick="openLogin('attendance')">Attendance System</li>
+          <li onclick="openLogin('fabrication')">Fabrication Manager</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li onclick="scrollToSection('features')">Features</li>
+          <li onclick="scrollToSection('pricing')">Pricing</li>
+          <li onclick="scrollToSection('contact')">Contact</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li onclick="openHelp()">Help Center</li>
+          <li onclick="window.open('https://wa.me/917766007236', '_blank')">WhatsApp Support</li>
+          <li onclick="window.location.href='mailto:sumetech98@gmail.com'">Email Us</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Sume-Tech Software Solutions. All rights reserved. &nbsp; | &nbsp; Made with ❤️ in India
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Help Button -->
+<button class="help-float" onclick="openHelp()">❓ Need Help?</button>
+
+<!-- ================= LOGIN MODAL ================= -->
+<div class="modal-overlay" id="loginModal">
+  <div class="login-modal">
+    <div class="modal-head">
+      <button class="close-btn" onclick="closeLogin()">✖</button>
+      <div class="modal-icon" id="loginIcon">📊</div>
+      <h2 id="loginTitle">GST Accounting Login</h2>
+      <p class="subtitle" id="loginSubtitle">Login to access your GST software</p>
+    </div>
+    <div class="login-error" id="loginError"></div>
+    <div class="login-success" id="loginSuccess"></div>
+    <form onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label>📧 Email / User ID</label>
+        <input type="text" id="loginEmail" placeholder="Enter your email or user ID" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label>🔒 Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password">
+      </div>
+      <button type="submit" class="login-submit gst" id="loginSubmitBtn">🔓 Login</button>
+    </form>
+    <div class="demo-info" id="loginDemoInfo">
+      <b>💡 Demo Credentials:</b><br>
+      Email: <b>admin@gstsoftware.com</b><br>
+      Password: <b>Admin@123456</b>
+    </div>
+    <div class="help-link">
+      Forgot password? <a href="https://wa.me/917766007236" target="_blank">Contact Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HELP MODAL ================= -->
+<div class="modal-overlay" id="helpModal">
+  <div class="login-modal" style="max-width:480px;">
+    <div class="modal-head">
+      <button class="close-btn" onclick="closeHelp()">✖</button>
+      <div class="modal-icon" style="background:linear-gradient(135deg,#10b981,#059669);">❓</div>
+      <h2>Help & Support</h2>
+      <p class="subtitle">We're here to help you 24/7</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-top:8px;">
+      <a href="tel:+917709497236" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:white;text-decoration:none;border-radius:12px;font-weight:700;">
+        <span style="font-size:24px;">📞</span>
+        <span><span style="display:block;font-size:11px;opacity:0.85;font-weight:600;">Call Karein</span>+91 77094 97236</span>
+      </a>
+      <a href="https://wa.me/917766007236" target="_blank" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;text-decoration:none;border-radius:12px;font-weight:700;">
+        <span style="font-size:24px;">📱</span>
+        <span><span style="display:block;font-size:11px;opacity:0.85;font-weight:600;">WhatsApp Chat</span>+91 77660 07236</span>
+      </a>
+      <a href="mailto:sumetech98@gmail.com" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:white;text-decoration:none;border-radius:12px;font-weight:700;">
+        <span style="font-size:24px;">✉️</span>
+        <span><span style="display:block;font-size:11px;opacity:0.85;font-weight:600;">Email Karein</span>sumetech98@gmail.com</span>
+      </a>
+    </div>
+    <div style="margin-top:20px; padding:14px; background:#f8fafc; border-radius:10px; font-size:13px; color:#475569; line-height:1.7;">
+      <b style="color:#1e3a8a;">🕐 Support Timing:</b><br>
+      Monday - Saturday • 10 AM - 8 PM<br>
+      <span style="color:#64748b;">(WhatsApp 24/7 available)</span>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// NAVIGATION
+// ============================================================
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const offset = 80;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}
+
+window.addEventListener('scroll', () => {
+  const sections = ['home', 'products', 'features', 'pricing', 'contact'];
+  const scrollPos = window.pageYOffset + 100;
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.offsetTop;
+      const bottom = top + el.offsetHeight;
+      const link = document.querySelector(`nav a[onclick*="${id}"]`);
+      if (link) {
+        if (scrollPos >= top && scrollPos < bottom) {
+          document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+          link.classList.add('active');
         }
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(upiText).then(onSuccess).catch(function () {
-            fallbackCopy(upiText, onSuccess);
-          });
-        } else {
-          fallbackCopy(upiText, onSuccess);
-        }
       }
+    }
+  });
+});
 
-      function fallbackCopy(text, callback) {
-        var textArea = document.createElement('textarea');
-        textArea.value = text;
-        textArea.style.position = 'fixed';
-        textArea.style.top = '-1000px';
-        textArea.style.opacity = '0';
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        try { document.execCommand('copy'); } catch (e) {}
-        document.body.removeChild(textArea);
-        if (callback) callback();
-      }
+// ============================================================
+// COPY-TO-CLIPBOARD (for demo credential mini buttons)
+// ============================================================
+function copyToClipboard(text, btn) {
+  function onSuccess() {
+    if (btn) {
+      const originalText = btn.textContent;
+      btn.classList.add('copied');
+      btn.textContent = '✓';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = originalText;
+      }, 1500);
+    }
+    showToast('📋 Copied: ' + text);
+  }
 
-      // -------- Submit Form --------
-      function submitProof(event) {
-        if (event) event.preventDefault();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
+      fallbackCopy(text, onSuccess);
+    });
+  } else {
+    fallbackCopy(text, onSuccess);
+  }
+}
 
-        var submitBtn = document.getElementById('submitBtn');
-        var formStatus = document.getElementById('formStatus');
-        if (!submitBtn || !formStatus) return;
+function fallbackCopy(text, callback) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.top = '-1000px';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(ta);
+  if (callback) callback();
+}
 
-        var fullName = (document.getElementById('fullName').value || '').trim();
-        var mobile = (document.getElementById('mobile').value || '').trim();
-        var email = (document.getElementById('email').value || '').trim();
-        var amount = (document.getElementById('amount').value || '').trim();
-        var txnId = (document.getElementById('txnId').value || '').trim();
-        var paymentDate = document.getElementById('paymentDate').value || '';
-        var product = document.getElementById('product').value || '';
-        var notes = (document.getElementById('notes').value || '').trim();
+// ============================================================
+// LOGIN SYSTEM — Opens software in NEW TAB (original page safe)
+// ============================================================
+const SOFTWARE_CONFIG = {
+  gst: {
+    title: 'GST Accounting Login',
+    subtitle: 'Login to access your GST software',
+    icon: '📊',
+    iconClass: 'gst',
+    btnClass: 'gst',
+    placeholder: 'Email (e.g. admin@gstsoftware.com)',
+    demo: '<b>💡 Demo Credentials:</b><br>Email: <b>admin@gstsoftware.com</b><br>Password: <b>Admin@123456</b>',
+    loginUrl: 'https://gstaccount98.blogspot.com/',
+    admin: 'admin@gmail.com',
+    adminPass: 'admin1234'
+  },
+  attendance: {
+    title: 'Attendance System Login',
+    subtitle: 'Login to access attendance software',
+    icon: '👷',
+    iconClass: 'attendance',
+    btnClass: 'attendance',
+    placeholder: 'Email (e.g. admin@attendance.com)',
+    demo: '<b>💡 Demo Credentials:</b><br>Email: <b>admin@attendance.com</b><br>Password: <b>admin123</b>',
+    loginUrl: 'https://workerattandace.blogspot.com/',
+    admin: 'zamilrja98@gmail.com',
+    adminPass: 'zamil1234'
+  },
+  fabrication: {
+    title: 'Fabrication Manager Login',
+    subtitle: 'Login to access fabrication software',
+    icon: '🏗️',
+    iconClass: 'fabrication',
+    btnClass: 'fabrication',
+    placeholder: 'User ID (e.g. user1year)',
+    demo: '<b>💡 Demo Credentials:</b><br>User: <b>user1year</b> / Pass: <b>yearpass</b><br>Admin: <b>admin</b> / <b>admin123</b>',
+    loginUrl: 'https://febricationwork.blogspot.com/',
+    admin: 'admin',
+    adminPass: 'admin123'
+  }
+};
 
-        if (!fullName || !mobile || !email || !amount || !txnId || !paymentDate || !product) {
-          formStatus.className = 'form-status error';
-          formStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please fill all required fields.';
-          return;
-        }
+let currentProduct = 'gst';
 
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        formStatus.className = 'form-status';
-        formStatus.style.display = 'none';
+function openLogin(product) {
+  currentProduct = product;
+  const config = SOFTWARE_CONFIG[product];
 
-        var subject = 'Payment Proof - ' + product + ' - ' + fullName;
-        var body =
-          'NEW PAYMENT PROOF SUBMISSION\n' +
-          '=============================\n\n' +
-          'Name:           ' + fullName + '\n' +
-          'Mobile:         ' + mobile + '\n' +
-          'Email:          ' + email + '\n' +
-          'Amount Paid:    Rs. ' + amount + '\n' +
-          'Transaction ID: ' + txnId + '\n' +
-          'Payment Date:   ' + paymentDate + '\n' +
-          'Product:        ' + product + '\n' +
-          'Notes:          ' + (notes || 'N/A') + '\n\n' +
-          '=============================\n' +
-          'Paid to UPI: ' + UPI_ID + '\n' +
-          'Submitted from Sumetech website.';
+  document.getElementById('loginTitle').textContent = config.title;
+  document.getElementById('loginSubtitle').textContent = config.subtitle;
+  document.getElementById('loginIcon').textContent = config.icon;
+  document.getElementById('loginIcon').className = 'modal-icon ' + config.iconClass;
+  document.getElementById('loginSubmitBtn').className = 'login-submit ' + config.btnClass;
+  document.getElementById('loginEmail').placeholder = config.placeholder;
+  document.getElementById('loginDemoInfo').innerHTML = config.demo;
+  document.getElementById('loginEmail').value = '';
+  document.getElementById('loginPassword').value = '';
+  document.getElementById('loginError').classList.remove('show');
+  document.getElementById('loginSuccess').classList.remove('show');
 
-        var mailtoLink = 'mailto:' + EMAIL_TO +
-                         '?subject=' + encodeURIComponent(subject) +
-                         '&body=' + encodeURIComponent(body);
+  document.getElementById('loginModal').classList.add('active');
+  setTimeout(() => document.getElementById('loginEmail').focus(), 200);
+}
 
-        window.location.href = mailtoLink;
+function closeLogin() {
+  document.getElementById('loginModal').classList.remove('active');
+}
 
-        setTimeout(function () {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Payment Proof';
+function handleLogin(e) {
+  e.preventDefault();
 
-          formStatus.className = 'form-status success';
-          formStatus.innerHTML = '<i class="fas fa-check-circle"></i> Your email client has opened. Please send the email to complete your submission. If it didn\'t open, email us directly at ' + EMAIL_TO;
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value.trim();
+  const config = SOFTWARE_CONFIG[currentProduct];
+  const errorEl = document.getElementById('loginError');
+  const successEl = document.getElementById('loginSuccess');
 
-          document.getElementById('paymentProofForm').reset();
-        }, 1500);
-      }
+  errorEl.classList.remove('show');
+  successEl.classList.remove('show');
 
-      // -------- Bind Events --------
-      function bindEvents() {
-        var buyBtn = document.getElementById('buyNowBtn');
-        var backBtn = document.getElementById('backBtn');
-        var copyBtn = document.getElementById('copyBtn');
-        var form = document.getElementById('paymentProofForm');
+  if (!email || !password) {
+    errorEl.textContent = '⚠️ Please enter both email/ID and password.';
+    errorEl.classList.add('show');
+    return;
+  }
 
-        if (buyBtn) buyBtn.onclick = showPaymentPage;
-        if (backBtn) backBtn.onclick = showMainPage;
-        if (copyBtn) copyBtn.onclick = copyUpiId;
-        if (form) form.onsubmit = submitProof;
-      }
+  const btn = document.getElementById('loginSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Logging in...';
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', bindEvents);
-      } else {
-        bindEvents();
-      }
+  setTimeout(() => {
+    const isAdmin = email === config.admin && password === config.adminPass;
+    const isUser = password.length >= 4 && email.length >= 3;
 
-    })();
-  </script>
+    if (!isAdmin && !isUser) {
+      errorEl.innerHTML = '❌ Invalid credentials!<br><small>Use demo credentials shown below, or contact support.</small>';
+      errorEl.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = '🔓 Login';
+      return;
+    }
+
+    successEl.innerHTML = '✅ Login successful! Opening software in new tab...';
+    successEl.classList.add('show');
+
+    try {
+      localStorage.setItem('st_logged_in', 'true');
+      localStorage.setItem('st_product', currentProduct);
+      localStorage.setItem('st_email', email);
+      localStorage.setItem('st_is_admin', isAdmin ? 'true' : 'false');
+    } catch (err) { console.warn(err); }
+
+    btn.disabled = false;
+    btn.textContent = '🔓 Login';
+    showToast('✅ Welcome! Opening ' + config.title.replace(' Login', '') + '...');
+
+    // ✅ OPEN IN NEW TAB — anchor method (popup blocker safe + original page never changes)
+    const newLink = document.createElement('a');
+    newLink.href = config.loginUrl;
+    newLink.target = '_blank';
+    newLink.rel = 'noopener noreferrer';
+    newLink.style.display = 'none';
+    document.body.appendChild(newLink);
+    newLink.click();
+    document.body.removeChild(newLink);
+
+    setTimeout(() => {
+      closeLogin();
+    }, 900);
+
+  }, 900);
+}
+
+function openHelp() {
+  document.getElementById('helpModal').classList.add('active');
+}
+function closeHelp() {
+  document.getElementById('helpModal').classList.remove('active');
+}
+
+['loginModal', 'helpModal'].forEach(id => {
+  document.getElementById(id).addEventListener('click', (e) => {
+    if (e.target.id === id) {
+      if (id === 'loginModal') closeLogin();
+      if (id === 'helpModal') closeHelp();
+    }
+  });
+});
+
+function showToast(msg, isError = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.className = 'toast', 4000);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeLogin();
+    closeHelp();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Bind copy buttons
+  document.querySelectorAll('.copy-mini-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.getAttribute('data-copy');
+      if (text) copyToClipboard(text, btn);
+    });
+  });
+
+  try {
+    const isLoggedIn = localStorage.getItem('st_logged_in');
+    const product = localStorage.getItem('st_product');
+    if (isLoggedIn === 'true' && product) {
+      const email = localStorage.getItem('st_email');
+      setTimeout(() => {
+        showToast('👋 Welcome back! You\'re logged in as ' + email);
+      }, 1500);
+    }
+  } catch (err) { console.warn(err); }
+  console.log('✅ Sume-Tech Solutions Website Loaded');
+});
+
+if (!('scrollBehavior' in document.documentElement.style)) {
+  const style = document.createElement('style');
+  style.textContent = 'html{scroll-behavior:smooth}';
+  document.head.appendChild(style);
+}
+</script>
 
 </body>
 </html>
