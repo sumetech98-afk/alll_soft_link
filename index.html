@@ -77,97 +77,6 @@ section { padding: 80px 24px; }
 .product-price .period { font-size: 14px; color: #64748b; font-weight: 600; }
 .product-price-monthly { font-size: 12px; color: #10b981; font-weight: 700; margin-bottom: 16px; }
 
-/* ==== DEMO CREDENTIALS BOX ==== */
-.demo-cred-box {
-  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-  border: 1.5px solid #bae6fd;
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin-bottom: 16px;
-}
-.demo-cred-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  gap: 8px;
-}
-.demo-cred-title span {
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: #0369a1;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.demo-cred-title .demo-tag {
-  font-size: 10px;
-  background: #0ea5e9;
-  color: white;
-  padding: 2px 7px;
-  border-radius: 10px;
-  letter-spacing: 0.4px;
-  font-weight: 700;
-}
-.demo-cred-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 0;
-  font-size: 12px;
-}
-.demo-cred-row + .demo-cred-row {
-  border-top: 1px dashed #bae6fd;
-}
-.demo-cred-label {
-  color: #0369a1;
-  font-weight: 700;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  white-space: nowrap;
-}
-.demo-cred-value-wrap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex: 1;
-  justify-content: flex-end;
-  min-width: 0;
-}
-.demo-cred-value {
-  font-family: 'SF Mono', 'Menlo', monospace;
-  font-size: 12px;
-  font-weight: 700;
-  color: #0f172a;
-  background: white;
-  padding: 3px 8px;
-  border-radius: 6px;
-  border: 1px solid #bae6fd;
-  word-break: break-all;
-  text-align: right;
-}
-.copy-mini-btn {
-  background: #0ea5e9;
-  color: white;
-  border: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.2s;
-}
-.copy-mini-btn:hover { background: #0284c7; transform: scale(1.05); }
-.copy-mini-btn.copied { background: #10b981; }
-
 .product-btn { width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: inherit; color: white; margin-top: auto; }
 .product-btn.gst { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
 .product-btn.attendance { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
@@ -246,7 +155,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
 .footer-col ul li:hover { color: #3b82f6; }
 .footer-bottom { padding-top: 24px; border-top: 1px solid #1e293b; text-align: center; font-size: 13px; color: #64748b; }
 
-/* ===== LOGIN MODAL ===== */
+/* ===== HELP MODAL ===== */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.7); z-index: 9999; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
 .modal-overlay.active { display: flex; }
 .login-modal { background: white; border-radius: 20px; padding: 40px 36px; max-width: 440px; width: 100%; box-shadow: 0 25px 70px rgba(0,0,0,0.4); animation: modalIn 0.35s ease; max-height: 92vh; overflow-y: auto; }
@@ -255,29 +164,8 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
 .login-modal .modal-head .close-btn { position: absolute; top: -12px; right: -12px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; color: #64748b; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
 .login-modal .modal-head .close-btn:hover { background: #e2e8f0; color: #0f172a; }
 .login-modal .modal-icon { width: 72px; height: 72px; margin: 0 auto 16px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
-.login-modal .modal-icon.gst { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
-.login-modal .modal-icon.attendance { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
-.login-modal .modal-icon.fabrication { background: linear-gradient(135deg, #1a4d8f, #2563eb); }
 .login-modal h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
 .login-modal .subtitle { font-size: 13px; color: #64748b; }
-.login-modal .form-group { margin-bottom: 16px; }
-.login-modal label { display: block; font-size: 13px; font-weight: 700; color: #475569; margin-bottom: 6px; }
-.login-modal input { width: 100%; padding: 13px 15px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 14px; font-family: inherit; transition: all 0.2s; }
-.login-modal input:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
-.login-modal .login-submit { width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; color: white; margin-top: 8px; transition: all 0.2s; font-family: inherit; }
-.login-modal .login-submit.gst { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
-.login-modal .login-submit.attendance { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
-.login-modal .login-submit.fabrication { background: linear-gradient(135deg, #1a4d8f, #2563eb); }
-.login-modal .login-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(30,58,138,0.35); }
-.login-modal .login-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
-.login-modal .login-error { background: #fee2e2; color: #991b1b; padding: 11px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 14px; display: none; border-left: 3px solid #dc2626; }
-.login-modal .login-error.show { display: block; }
-.login-modal .login-success { background: #d1fae5; color: #065f46; padding: 11px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 14px; display: none; border-left: 3px solid #10b981; }
-.login-modal .login-success.show { display: block; }
-.login-modal .demo-info { margin-top: 18px; padding: 14px; background: #f8fafc; border-radius: 10px; font-size: 12px; color: #64748b; line-height: 1.7; border-left: 3px solid #3b82f6; }
-.login-modal .demo-info b { color: #1e3a8a; }
-.login-modal .help-link { text-align: center; margin-top: 16px; font-size: 13px; color: #64748b; }
-.login-modal .help-link a { color: #3b82f6; font-weight: 700; text-decoration: none; }
 
 /* ===== TOAST ===== */
 .toast { position: fixed; bottom: 24px; right: 24px; background: #10b981; color: white; padding: 14px 22px; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); font-size: 14px; font-weight: 600; opacity: 0; transform: translateY(20px); transition: all 0.3s; z-index: 10000; max-width: 360px; }
@@ -331,7 +219,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
       <a onclick="scrollToSection('features')">✨ Features</a>
       <a onclick="scrollToSection('pricing')">💎 Pricing</a>
       <a onclick="scrollToSection('contact')">📞 Contact</a>
-      <a onclick="openLogin('gst')" class="nav-cta">🔓 Login</a>
+      <a onclick="openSoftware('gst')" class="nav-cta">🚀 Try Demo</a>
     </nav>
   </div>
 </header>
@@ -361,7 +249,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
     <div class="section-head">
       <span class="tag">Our Products</span>
       <h2>Powerful Software for Every Business</h2>
-      <p>Choose the software that fits your business needs. Demo credentials are visible on each card — try them now!</p>
+      <p>Choose the software that fits your business needs. Click "Try Demo" to open it directly — no login required!</p>
     </div>
     <div class="product-grid">
 
@@ -387,30 +275,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
             <span class="period">/ month</span>
           </div>
           <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
-
-          <!-- ===== DEMO CREDENTIALS ===== -->
-          <div class="demo-cred-box">
-            <div class="demo-cred-title">
-              <span>🔑 Demo Login</span>
-              <span class="demo-tag">TRY NOW</span>
-            </div>
-            <div class="demo-cred-row">
-              <span class="demo-cred-label">User ID</span>
-              <div class="demo-cred-value-wrap">
-                <span class="demo-cred-value" id="gst-user">admin@gstsoftware.com</span>
-                <button type="button" class="copy-mini-btn" data-copy="admin@gstsoftware.com" title="Copy User ID">📋</button>
-              </div>
-            </div>
-            <div class="demo-cred-row">
-              <span class="demo-cred-label">Password</span>
-              <div class="demo-cred-value-wrap">
-                <span class="demo-cred-value" id="gst-pass">Admin@123456</span>
-                <button type="button" class="copy-mini-btn" data-copy="Admin@123456" title="Copy Password">📋</button>
-              </div>
-            </div>
-          </div>
-
-          <button class="product-btn gst" onclick="openLogin('gst')">🔓 Login / Get Started</button>
+          <button class="product-btn gst" onclick="openSoftware('gst')">🚀 Try Demo / Open Software</button>
         </div>
       </div>
 
@@ -435,30 +300,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
             <span class="period">/ month</span>
           </div>
           <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
-
-          <!-- ===== DEMO CREDENTIALS ===== -->
-          <div class="demo-cred-box">
-            <div class="demo-cred-title">
-              <span>🔑 Demo Login</span>
-              <span class="demo-tag">TRY NOW</span>
-            </div>
-            <div class="demo-cred-row">
-              <span class="demo-cred-label">User ID</span>
-              <div class="demo-cred-value-wrap">
-                <span class="demo-cred-value" id="att-user">admin@attendance.com</span>
-                <button type="button" class="copy-mini-btn" data-copy="admin@attendance.com" title="Copy User ID">📋</button>
-              </div>
-            </div>
-            <div class="demo-cred-row">
-              <span class="demo-cred-label">Password</span>
-              <div class="demo-cred-value-wrap">
-                <span class="demo-cred-value" id="att-pass">admin123</span>
-                <button type="button" class="copy-mini-btn" data-copy="admin123" title="Copy Password">📋</button>
-              </div>
-            </div>
-          </div>
-
-          <button class="product-btn attendance" onclick="openLogin('attendance')">🔓 Login / Get Started</button>
+          <button class="product-btn attendance" onclick="openSoftware('attendance')">🚀 Try Demo / Open Software</button>
         </div>
       </div>
 
@@ -483,44 +325,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
             <span class="period">/ month</span>
           </div>
           <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
-
-          <!-- ===== DEMO CREDENTIALS ===== -->
-          <div class="demo-cred-box">
-            <div class="demo-cred-title">
-              <span>🔑 Demo Login</span>
-              <span class="demo-tag">TRY NOW</span>
-            </div>
-            <div class="demo-cred-row">
-              <span class="demo-cred-label">User ID</span>
-              <div class="demo-cred-value-wrap">
-                <span class="demo-cred-value" id="fab-user">admin</span>
-                <button type="button" class="copy-mini-btn" data-copy="admin" title="Copy User ID">📋</button>
-              </div>
-            </div>
-            <div class="demo-cred-row">
-              <span class="demo-cred-label">Password</span>
-              <div class="demo-cred-value-wrap">
-                <span class="demo-cred-value" id="fab-pass">admin123</span>
-                <button type="button" class="copy-mini-btn" data-copy="admin123" title="Copy Password">📋</button>
-              </div>
-            </div>
-            <div class="demo-cred-row">
-              <span class="demo-cred-label">Alt User</span>
-              <div class="demo-cred-value-wrap">
-                <span class="demo-cred-value" id="fab-user2">user1year</span>
-                <button type="button" class="copy-mini-btn" data-copy="user1year" title="Copy Alt User ID">📋</button>
-              </div>
-            </div>
-            <div class="demo-cred-row">
-              <span class="demo-cred-label">Alt Pass</span>
-              <div class="demo-cred-value-wrap">
-                <span class="demo-cred-value" id="fab-pass2">yearpass</span>
-                <button type="button" class="copy-mini-btn" data-copy="yearpass" title="Copy Alt Password">📋</button>
-              </div>
-            </div>
-          </div>
-
-          <button class="product-btn fabrication" onclick="openLogin('fabrication')">🔓 Login / Get Started</button>
+          <button class="product-btn fabrication" onclick="openSoftware('fabrication')">🚀 Try Demo / Open Software</button>
         </div>
       </div>
 
@@ -609,7 +414,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
           <li>Basic reports</li>
           <li>Excel/PDF export</li>
         </ul>
-        <button class="btn btn-secondary" onclick="openLogin('gst')">Get Started</button>
+        <button class="btn btn-secondary" onclick="openSoftware('gst')">Try Demo</button>
       </div>
 
       <!-- Quarterly -->
@@ -628,7 +433,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
           <li>WhatsApp integration</li>
           <li>SMS notifications</li>
         </ul>
-        <button class="btn btn-secondary" onclick="openLogin('gst')">Get Started</button>
+        <button class="btn btn-secondary" onclick="openSoftware('gst')">Try Demo</button>
       </div>
 
       <!-- 1 Year - Featured -->
@@ -647,7 +452,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
           <li>Dedicated account manager</li>
           <li>Priority WhatsApp support</li>
         </ul>
-        <button class="btn btn-primary" onclick="openLogin('gst')">Best Value</button>
+        <button class="btn btn-primary" onclick="openSoftware('gst')">Best Value</button>
       </div>
 
       <!-- 2 Years -->
@@ -666,7 +471,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
           <li>Custom report builder</li>
           <li>API access</li>
         </ul>
-        <button class="btn btn-secondary" onclick="openLogin('gst')">Get Started</button>
+        <button class="btn btn-secondary" onclick="openSoftware('gst')">Try Demo</button>
       </div>
 
       <!-- 5 Years - Ultimate -->
@@ -685,7 +490,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
           <li>Personal account manager</li>
           <li>On-site training included</li>
         </ul>
-        <button class="btn btn-ultimate" onclick="openLogin('gst')">Ultimate Plan</button>
+        <button class="btn btn-ultimate" onclick="openSoftware('gst')">Ultimate Plan</button>
       </div>
 
     </div>
@@ -739,9 +544,9 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
       <div class="footer-col">
         <h4>Products</h4>
         <ul>
-          <li onclick="openLogin('gst')">GST Accounting</li>
-          <li onclick="openLogin('attendance')">Attendance System</li>
-          <li onclick="openLogin('fabrication')">Fabrication Manager</li>
+          <li onclick="openSoftware('gst')">GST Accounting</li>
+          <li onclick="openSoftware('attendance')">Attendance System</li>
+          <li onclick="openSoftware('fabrication')">Fabrication Manager</li>
         </ul>
       </div>
       <div class="footer-col">
@@ -769,39 +574,6 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
 
 <!-- Floating Help Button -->
 <button class="help-float" onclick="openHelp()">❓ Need Help?</button>
-
-<!-- ================= LOGIN MODAL ================= -->
-<div class="modal-overlay" id="loginModal">
-  <div class="login-modal">
-    <div class="modal-head">
-      <button class="close-btn" onclick="closeLogin()">✖</button>
-      <div class="modal-icon" id="loginIcon">📊</div>
-      <h2 id="loginTitle">GST Accounting Login</h2>
-      <p class="subtitle" id="loginSubtitle">Login to access your GST software</p>
-    </div>
-    <div class="login-error" id="loginError"></div>
-    <div class="login-success" id="loginSuccess"></div>
-    <form onsubmit="handleLogin(event)">
-      <div class="form-group">
-        <label>📧 Email / User ID</label>
-        <input type="text" id="loginEmail" placeholder="Enter your email or user ID" autocomplete="username">
-      </div>
-      <div class="form-group">
-        <label>🔒 Password</label>
-        <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password">
-      </div>
-      <button type="submit" class="login-submit gst" id="loginSubmitBtn">🔓 Login</button>
-    </form>
-    <div class="demo-info" id="loginDemoInfo">
-      <b>💡 Demo Credentials:</b><br>
-      Email: <b>admin@gstsoftware.com</b><br>
-      Password: <b>Admin@123456</b>
-    </div>
-    <div class="help-link">
-      Forgot password? <a href="https://wa.me/917766007236" target="_blank">Contact Support</a>
-    </div>
-  </div>
-</div>
 
 <!-- ================= HELP MODAL ================= -->
 <div class="modal-overlay" id="helpModal">
@@ -870,178 +642,46 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================================
-// COPY-TO-CLIPBOARD (for demo credential mini buttons)
-// ============================================================
-function copyToClipboard(text, btn) {
-  function onSuccess() {
-    if (btn) {
-      const originalText = btn.textContent;
-      btn.classList.add('copied');
-      btn.textContent = '✓';
-      setTimeout(() => {
-        btn.classList.remove('copied');
-        btn.textContent = originalText;
-      }, 1500);
-    }
-    showToast('📋 Copied: ' + text);
-  }
-
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
-      fallbackCopy(text, onSuccess);
-    });
-  } else {
-    fallbackCopy(text, onSuccess);
-  }
-}
-
-function fallbackCopy(text, callback) {
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.top = '-1000px';
-  ta.style.opacity = '0';
-  document.body.appendChild(ta);
-  ta.focus();
-  ta.select();
-  try { document.execCommand('copy'); } catch (e) {}
-  document.body.removeChild(ta);
-  if (callback) callback();
-}
-
-// ============================================================
-// LOGIN SYSTEM — Opens software in NEW TAB (original page safe)
+// DIRECT SOFTWARE LAUNCH — NO LOGIN FORM
 // ============================================================
 const SOFTWARE_CONFIG = {
   gst: {
-    title: 'GST Accounting Login',
-    subtitle: 'Login to access your GST software',
-    icon: '📊',
-    iconClass: 'gst',
-    btnClass: 'gst',
-    placeholder: 'Email (e.g. admin@gstsoftware.com)',
-    demo: '<b>💡 Demo Credentials:</b><br>Email: <b>admin@gstsoftware.com</b><br>Password: <b>Admin@123456</b>',
-    loginUrl: 'https://gstaccount98.blogspot.com/',
-    admin: 'admin@gmail.com',
-    adminPass: 'admin1234'
+    name: 'GST Accounting',
+    loginUrl: 'https://gstaccount98.blogspot.com/'
   },
   attendance: {
-    title: 'Attendance System Login',
-    subtitle: 'Login to access attendance software',
-    icon: '👷',
-    iconClass: 'attendance',
-    btnClass: 'attendance',
-    placeholder: 'Email (e.g. admin@attendance.com)',
-    demo: '<b>💡 Demo Credentials:</b><br>Email: <b>admin@attendance.com</b><br>Password: <b>admin123</b>',
-    loginUrl: 'https://workerattandace.blogspot.com/',
-    admin: 'zamilrja98@gmail.com',
-    adminPass: 'zamil1234'
+    name: 'Attendance System',
+    loginUrl: 'https://workerattandace.blogspot.com/'
   },
   fabrication: {
-    title: 'Fabrication Manager Login',
-    subtitle: 'Login to access fabrication software',
-    icon: '🏗️',
-    iconClass: 'fabrication',
-    btnClass: 'fabrication',
-    placeholder: 'User ID (e.g. user1year)',
-    demo: '<b>💡 Demo Credentials:</b><br>User: <b>user1year</b> / Pass: <b>yearpass</b><br>Admin: <b>admin</b> / <b>admin123</b>',
-    loginUrl: 'https://febricationwork.blogspot.com/',
-    admin: 'admin',
-    adminPass: 'admin123'
+    name: 'Fabrication Work Manager',
+    loginUrl: 'https://febricationwork.blogspot.com/'
   }
 };
 
-let currentProduct = 'gst';
-
-function openLogin(product) {
-  currentProduct = product;
+function openSoftware(product) {
   const config = SOFTWARE_CONFIG[product];
-
-  document.getElementById('loginTitle').textContent = config.title;
-  document.getElementById('loginSubtitle').textContent = config.subtitle;
-  document.getElementById('loginIcon').textContent = config.icon;
-  document.getElementById('loginIcon').className = 'modal-icon ' + config.iconClass;
-  document.getElementById('loginSubmitBtn').className = 'login-submit ' + config.btnClass;
-  document.getElementById('loginEmail').placeholder = config.placeholder;
-  document.getElementById('loginDemoInfo').innerHTML = config.demo;
-  document.getElementById('loginEmail').value = '';
-  document.getElementById('loginPassword').value = '';
-  document.getElementById('loginError').classList.remove('show');
-  document.getElementById('loginSuccess').classList.remove('show');
-
-  document.getElementById('loginModal').classList.add('active');
-  setTimeout(() => document.getElementById('loginEmail').focus(), 200);
-}
-
-function closeLogin() {
-  document.getElementById('loginModal').classList.remove('active');
-}
-
-function handleLogin(e) {
-  e.preventDefault();
-
-  const email = document.getElementById('loginEmail').value.trim();
-  const password = document.getElementById('loginPassword').value.trim();
-  const config = SOFTWARE_CONFIG[currentProduct];
-  const errorEl = document.getElementById('loginError');
-  const successEl = document.getElementById('loginSuccess');
-
-  errorEl.classList.remove('show');
-  successEl.classList.remove('show');
-
-  if (!email || !password) {
-    errorEl.textContent = '⚠️ Please enter both email/ID and password.';
-    errorEl.classList.add('show');
+  if (!config) {
+    showToast('⚠️ Software not found', true);
     return;
   }
 
-  const btn = document.getElementById('loginSubmitBtn');
-  btn.disabled = true;
-  btn.textContent = '⏳ Logging in...';
+  showToast('🚀 Opening ' + config.name + '...');
 
-  setTimeout(() => {
-    const isAdmin = email === config.admin && password === config.adminPass;
-    const isUser = password.length >= 4 && email.length >= 3;
-
-    if (!isAdmin && !isUser) {
-      errorEl.innerHTML = '❌ Invalid credentials!<br><small>Use demo credentials shown below, or contact support.</small>';
-      errorEl.classList.add('show');
-      btn.disabled = false;
-      btn.textContent = '🔓 Login';
-      return;
-    }
-
-    successEl.innerHTML = '✅ Login successful! Opening software in new tab...';
-    successEl.classList.add('show');
-
-    try {
-      localStorage.setItem('st_logged_in', 'true');
-      localStorage.setItem('st_product', currentProduct);
-      localStorage.setItem('st_email', email);
-      localStorage.setItem('st_is_admin', isAdmin ? 'true' : 'false');
-    } catch (err) { console.warn(err); }
-
-    btn.disabled = false;
-    btn.textContent = '🔓 Login';
-    showToast('✅ Welcome! Opening ' + config.title.replace(' Login', '') + '...');
-
-    // ✅ OPEN IN NEW TAB — anchor method (popup blocker safe + original page never changes)
-    const newLink = document.createElement('a');
-    newLink.href = config.loginUrl;
-    newLink.target = '_blank';
-    newLink.rel = 'noopener noreferrer';
-    newLink.style.display = 'none';
-    document.body.appendChild(newLink);
-    newLink.click();
-    document.body.removeChild(newLink);
-
-    setTimeout(() => {
-      closeLogin();
-    }, 900);
-
-  }, 900);
+  // Open directly in a new tab — no login form, no credential check
+  const newLink = document.createElement('a');
+  newLink.href = config.loginUrl;
+  newLink.target = '_blank';
+  newLink.rel = 'noopener noreferrer';
+  newLink.style.display = 'none';
+  document.body.appendChild(newLink);
+  newLink.click();
+  document.body.removeChild(newLink);
 }
 
+// ============================================================
+// HELP MODAL
+// ============================================================
 function openHelp() {
   document.getElementById('helpModal').classList.add('active');
 }
@@ -1049,13 +689,8 @@ function closeHelp() {
   document.getElementById('helpModal').classList.remove('active');
 }
 
-['loginModal', 'helpModal'].forEach(id => {
-  document.getElementById(id).addEventListener('click', (e) => {
-    if (e.target.id === id) {
-      if (id === 'loginModal') closeLogin();
-      if (id === 'helpModal') closeHelp();
-    }
-  });
+document.getElementById('helpModal').addEventListener('click', (e) => {
+  if (e.target.id === 'helpModal') closeHelp();
 });
 
 function showToast(msg, isError = false) {
@@ -1067,32 +702,11 @@ function showToast(msg, isError = false) {
 }
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeLogin();
-    closeHelp();
-  }
+  if (e.key === 'Escape') closeHelp();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Bind copy buttons
-  document.querySelectorAll('.copy-mini-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const text = btn.getAttribute('data-copy');
-      if (text) copyToClipboard(text, btn);
-    });
-  });
-
-  try {
-    const isLoggedIn = localStorage.getItem('st_logged_in');
-    const product = localStorage.getItem('st_product');
-    if (isLoggedIn === 'true' && product) {
-      const email = localStorage.getItem('st_email');
-      setTimeout(() => {
-        showToast('👋 Welcome back! You\'re logged in as ' + email);
-      }, 1500);
-    }
-  } catch (err) { console.warn(err); }
-  console.log('✅ Sume-Tech Solutions Website Loaded');
+  console.log('✅ Sume-Tech Solutions Website Loaded — Direct Demo Mode');
 });
 
 if (!('scrollBehavior' in document.documentElement.style)) {
