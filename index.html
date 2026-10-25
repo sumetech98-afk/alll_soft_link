@@ -77,6 +77,97 @@ section { padding: 80px 24px; }
 .product-price .period { font-size: 14px; color: #64748b; font-weight: 600; }
 .product-price-monthly { font-size: 12px; color: #10b981; font-weight: 700; margin-bottom: 16px; }
 
+/* ==== DEMO CREDENTIALS BOX ==== */
+.demo-cred-box {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 1.5px solid #bae6fd;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.demo-cred-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+.demo-cred-title span {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.demo-cred-title .demo-tag {
+  font-size: 10px;
+  background: #0ea5e9;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 10px;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+}
+.demo-cred-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 12px;
+}
+.demo-cred-row + .demo-cred-row {
+  border-top: 1px dashed #bae6fd;
+}
+.demo-cred-label {
+  color: #0369a1;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+.demo-cred-value-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.demo-cred-value {
+  font-family: 'SF Mono', 'Menlo', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  background: white;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
+  word-break: break-all;
+  text-align: right;
+}
+.copy-mini-btn {
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.copy-mini-btn:hover { background: #0284c7; transform: scale(1.05); }
+.copy-mini-btn.copied { background: #10b981; }
+
 .product-btn { width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: inherit; color: white; margin-top: auto; }
 .product-btn.gst { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
 .product-btn.attendance { background: linear-gradient(135deg, #0984e3, #6c5ce7); }
@@ -249,7 +340,7 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
     <div class="section-head">
       <span class="tag">Our Products</span>
       <h2>Powerful Software for Every Business</h2>
-      <p>Choose the software that fits your business needs. Click "Try Demo" to open it directly — no login required!</p>
+      <p>Choose the software that fits your business needs. Demo credentials are visible on each card — click "Try Demo" to open directly!</p>
     </div>
     <div class="product-grid">
 
@@ -275,6 +366,29 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
             <span class="period">/ month</span>
           </div>
           <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
+
+          <!-- ===== DEMO CREDENTIALS ===== -->
+          <div class="demo-cred-box">
+            <div class="demo-cred-title">
+              <span>🔑 Demo Login</span>
+              <span class="demo-tag">TRY NOW</span>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">User ID</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="gst-user">admin@gmail.com</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin@gmail.com" title="Copy User ID">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Password</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="gst-pass">admin1234</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin1234" title="Copy Password">📋</button>
+              </div>
+            </div>
+          </div>
+
           <button class="product-btn gst" onclick="openSoftware('gst')">🚀 Try Demo / Open Software</button>
         </div>
       </div>
@@ -300,6 +414,29 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
             <span class="period">/ month</span>
           </div>
           <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
+
+          <!-- ===== DEMO CREDENTIALS ===== -->
+          <div class="demo-cred-box">
+            <div class="demo-cred-title">
+              <span>🔑 Demo Login</span>
+              <span class="demo-tag">TRY NOW</span>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">User ID</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="att-user">zamilrja98@gmail.com</span>
+                <button type="button" class="copy-mini-btn" data-copy="zamilrja98@gmail.com" title="Copy User ID">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Password</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="att-pass">zamil1234</span>
+                <button type="button" class="copy-mini-btn" data-copy="zamil1234" title="Copy Password">📋</button>
+              </div>
+            </div>
+          </div>
+
           <button class="product-btn attendance" onclick="openSoftware('attendance')">🚀 Try Demo / Open Software</button>
         </div>
       </div>
@@ -325,6 +462,43 @@ footer { background: #0f172a; color: #94a3b8; padding: 48px 24px 24px; }
             <span class="period">/ month</span>
           </div>
           <div class="product-price-monthly">5-Year Plan: ₹60,000 total (₹1,000 × 60 months)</div>
+
+          <!-- ===== DEMO CREDENTIALS ===== -->
+          <div class="demo-cred-box">
+            <div class="demo-cred-title">
+              <span>🔑 Demo Login</span>
+              <span class="demo-tag">TRY NOW</span>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">User ID</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="fab-user">admin</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin" title="Copy User ID">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Password</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="fab-pass">admin123</span>
+                <button type="button" class="copy-mini-btn" data-copy="admin123" title="Copy Password">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Alt User</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="fab-user2">user1year</span>
+                <button type="button" class="copy-mini-btn" data-copy="user1year" title="Copy Alt User ID">📋</button>
+              </div>
+            </div>
+            <div class="demo-cred-row">
+              <span class="demo-cred-label">Alt Pass</span>
+              <div class="demo-cred-value-wrap">
+                <span class="demo-cred-value" id="fab-pass2">yearpass</span>
+                <button type="button" class="copy-mini-btn" data-copy="yearpass" title="Copy Alt Password">📋</button>
+              </div>
+            </div>
+          </div>
+
           <button class="product-btn fabrication" onclick="openSoftware('fabrication')">🚀 Try Demo / Open Software</button>
         </div>
       </div>
@@ -642,7 +816,47 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================================
-// DIRECT SOFTWARE LAUNCH — NO LOGIN FORM
+// COPY-TO-CLIPBOARD (for demo credential mini buttons)
+// ============================================================
+function copyToClipboard(text, btn) {
+  function onSuccess() {
+    if (btn) {
+      const originalText = btn.textContent;
+      btn.classList.add('copied');
+      btn.textContent = '✓';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = originalText;
+      }, 1500);
+    }
+    showToast('📋 Copied: ' + text);
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
+      fallbackCopy(text, onSuccess);
+    });
+  } else {
+    fallbackCopy(text, onSuccess);
+  }
+}
+
+function fallbackCopy(text, callback) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.top = '-1000px';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(ta);
+  if (callback) callback();
+}
+
+// ============================================================
+// DIRECT SOFTWARE LAUNCH — NO LOGIN FORM (demo creds still visible)
 // ============================================================
 const SOFTWARE_CONFIG = {
   gst: {
@@ -706,6 +920,14 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Bind copy buttons for demo credentials
+  document.querySelectorAll('.copy-mini-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.getAttribute('data-copy');
+      if (text) copyToClipboard(text, btn);
+    });
+  });
+
   console.log('✅ Sume-Tech Solutions Website Loaded — Direct Demo Mode');
 });
 
